@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌽 Kukuřice Bot — Co je nového?</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:     #f5a623;
+    --gold-dark:#c47d0e;
+    --green:    #3cb371;
+    --green-dk: #267a4e;
+    --red:      #e05252;
+    --blue:     #4a90d9;
+    --purple:   #8b5cf6;
+    --bg:       #1a1a2e;
+    --bg2:      #16213e;
+    --bg3:      #0f3460;
+    --card:     #1e2a45;
+    --card2:    #243352;
+    --text:     #e8eaf6;
+    --muted:    #8892b0;
+    --border:   rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated grain background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 20% -10%, rgba(245,166,35,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 110%, rgba(59,179,113,0.10) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .logo {
+    font-size: 72px;
+    line-height: 1;
+    display: block;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 24px rgba(245,166,35,0.6));
+    animation: bounce 2.4s ease-in-out infinite;
+  }
+
+  h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    background: linear-gradient(135deg, #f5a623, #ffd580, #f5a623);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .version-badge {
+    display: inline-block;
+    margin-top: 18px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #1a1a2e;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.9rem;
+    padding: 5px 18px;
+    border-radius: 99px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 16px rgba(245,166,35,0.35);
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.45rem;
+    margin: 52px 0 20px;
+    color: var(--text);
+  }
+
+  .section-title .icon {
+    font-size: 1.6rem;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--border);
+    margin-left: 8px;
+  }
+
+  /* ── HIGHLIGHT BANNER ── */
+  .highlight-banner {
+    background: linear-gradient(135deg, rgba(139,92,246,0.18), rgba(74,144,217,0.12));
+    border: 1px solid rgba(139,92,246,0.35);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .highlight-banner .big-icon {
+    font-size: 2.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .highlight-banner h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    color: #c4b5fd;
+    margin-bottom: 6px;
+  }
+
+  .highlight-banner p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  }
+
+  .card .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* card accent colors */
+  .card.gold  { border-color: rgba(245,166,35,0.3);  }
+  .card.gold .card-icon-wrap  { color: var(--gold); }
+  .card.green { border-color: rgba(59,179,113,0.3);  }
+  .card.red   { border-color: rgba(224,82,82,0.3);   }
+  .card.blue  { border-color: rgba(74,144,217,0.3);  }
+  .card.purple{ border-color: rgba(139,92,246,0.3);  }
+
+  /* ── BEGINNER BLOCK ── */
+  .beginner-block {
+    background: linear-gradient(135deg, rgba(59,179,113,0.15), rgba(245,166,35,0.08));
+    border: 1.5px solid rgba(59,179,113,0.4);
+    border-radius: 18px;
+    padding: 28px 32px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .beginner-block h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    color: #6ee7b7;
+    margin-bottom: 8px;
+  }
+
+  .beginner-block p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .perks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  @media (max-width: 500px) {
+    .perks { grid-template-columns: 1fr; }
+  }
+
+  .perk {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .perk .perk-icon { font-size: 1.3rem; }
+  .perk .perk-text { color: var(--text); line-height: 1.3; }
+  .perk .perk-sub  { font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+
+  /* ── EMBED SECTION ── */
+  .embed-preview {
+    background: var(--card);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px 14px 14px 8px;
+    padding: 22px 26px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .embed-preview h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    color: var(--gold);
+  }
+
+  .embed-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+
+  .embed-row .dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .embed-row .dot.gold { background: var(--gold); }
+  .embed-row .dot.blue { background: var(--blue); }
+  .embed-row .dot.red  { background: var(--red); }
+  .embed-row .dot.purple { background: var(--purple); }
+
+  .embed-row span { color: var(--muted); line-height: 1.5; }
+  .embed-row strong { color: var(--text); }
+
+  /* ── FIX BADGE ── */
+  .fix-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .fix-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .fix-item .fix-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .fix-item .fix-body h4 {
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+
+  .fix-item .fix-body p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    margin-top: 64px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+
+  footer .corn-row {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* stagger children */
+  .cards .card:nth-child(1) { animation-delay: 0.05s; }
+  .cards .card:nth-child(2) { animation-delay: 0.10s; }
+  .cards .card:nth-child(3) { animation-delay: 0.15s; }
+  .cards .card:nth-child(4) { animation-delay: 0.20s; }
+  .cards .card:nth-child(5) { animation-delay: 0.25s; }
+  .cards .card:nth-child(6) { animation-delay: 0.30s; }
+
+  .fix-list .fix-item:nth-child(1) { animation-delay: 0.05s; }
+  .fix-list .fix-item:nth-child(2) { animation-delay: 0.10s; }
+  .fix-list .fix-item:nth-child(3) { animation-delay: 0.15s; }
+  .fix-list .fix-item:nth-child(4) { animation-delay: 0.20s; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <span class="logo">🌽</span>
+    <h1>Co je nového na farmě?</h1>
+    <p class="subtitle">Kukuřice Bot — Přehled změn</p>
+    <span class="version-badge">Aktualizace 2025</span>
+  </header>
+
+  <!-- BEGINNER MODE -->
+  <div class="section-title"><span class="icon">🌟</span> Velká novinka — Začátečnický mód</div>
+
+  <div class="beginner-block">
+    <h3>Nová farma? Žádný stres! 🎉</h3>
+    <p>
+      Prvních <strong>5 sklizní</strong> na vašem serveru probíhá ve speciálním začátečnickém módu.
+      Chceme, aby si každý mohl farmaření užít bez zbytečné frustrace, než se zorientuje.
+      Po 5. sklizni se automaticky přepne na plný mód — nic nemusíte dělat.
+    </p>
+    <div class="perks">
+      <div class="perk">
+        <span class="perk-icon">⏱️</span>
+        <div>
+          <div class="perk-text">Delší čas na minihry</div>
+          <div class="perk-sub">12 sekund místo 6</div>
+        </div>
+      </div>
+      <div class="perk">
+        <span class="perk-icon">🎯</span>
+        <div>
+          <div class="perk-text">Méně tlačítek</div>
+          <div class="perk-sub">3 místo 5 — snazší klikání</div>
+        </div>
+      </div>
+      <div class="perk">
+        <span class="perk-icon">💧</span>
+        <div>
+          <div class="perk-text">Zalití vždy funguje</div>
+          <div class="perk-sub">žádné náhodné selhání</div>
+        </div>
+      </div>
+      <div class="perk">
+        <span class="perk-icon">🐦‍⬛</span>
+        <div>
+          <div class="perk-text">Vrány přilétají méně</div>
+          <div class="perk-sub">o 70 % nižší šance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMBED CHANGES -->
+  <div class="section-title"><span class="icon">📋</span> Přehled farmy vypadá lépe</div>
+
+  <div class="embed-preview">
+    <h3>✨ Co nového uvidíte v přehledu farmy</h3>
+    <div class="embed-row">
+      <div class="dot green"></div>
+      <span><strong>Progress bary pro růst a vodu</strong> — místo suchého čísla teď vidíte grafický pruh, jak na tom kukuřice je 🟩⬛</span>
+    </div>
+    <div class="embed-row">
+      <div class="dot gold"></div>
+      <span><strong>Barevný přehled podle stavu</strong> — červená když jsou vrány, oranžová při suchu, zlatá normálně, zelená když je čas sklízet</span>
+    </div>
+    <div class="embed-row">
+      <div class="dot blue"></div>
+      <span><strong>Časy přehledněji</strong> — „2 h 15 min" místo „2 hodiny a 15 minut a 30 sekund"</span>
+    </div>
+    <div class="embed-row">
+      <div class="dot purple"></div>
+      <span><strong>Začátečnický mód badge</strong> — pokud jste noví, hned vidíte kolik sklizní vám ještě zbývá 🌟</span>
+    </div>
+    <div class="embed-row">
+      <div class="dot red"></div>
+      <span><strong>Emotikony všude</strong> — stav farmy, akce, tlačítka — vše je přehledněji označené ikonami</span>
+    </div>
+  </div>
+
+  <!-- MINIGAME CHANGES -->
+  <div class="section-title"><span class="icon">🎮</span> Minihry</div>
+
+  <div class="cards">
+    <div class="card gold">
+      <span class="card-icon">🌽</span>
+      <h3>Sklizeň</h3>
+      <p>Zpráva po sklizni teď jasně ukazuje kolik kusů bylo sebráno, kolik přišlo do pokladny a kdo co vydělal.</p>
+    </div>
+    <div class="card green">
+      <span class="card-icon">🌱</span>
+      <h3>Sbírání sazenic</h3>
+      <p>Výsledky jsou přehlednější — hned vidíte kolik sazenic bylo uloženo a jestli přišly nějaké bonusové mince za přebytek.</p>
+    </div>
+    <div class="card red">
+      <span class="card-icon">🐦‍⬛</span>
+      <h3>Plašení vran</h3>
+      <p>Po vyplašení uvidíte kdo jak přispěl a kolik mincí za to dostal. Výsledky jsou teď mnohem čitelnější.</p>
+    </div>
+    <div class="card blue">
+      <span class="card-icon">⏱️</span>
+      <h3>Oznámení v průběhu</h3>
+      <p>Footer zprávy teď říká přesně kolik sekund máte na klikání — a zda jste v začátečnickém módu s bonusovým časem.</p>
+    </div>
+  </div>
+
+  <!-- KOMPOSTER / STRASAK -->
+  <div class="section-title"><span class="icon">♻️</span> Kompostér &amp; Strašák</div>
+
+  <div class="cards">
+    <div class="card green">
+      <span class="card-icon">♻️</span>
+      <h3>Kompostér</h3>
+      <p>Přehled teď obsahuje grafický progress bar k další úrovni. Vidíte přesně kolik mincí ještě chybí na upgrade.</p>
+    </div>
+    <div class="card blue">
+      <span class="card-icon">🦅</span>
+      <h3>Strašák</h3>
+      <p>Stejné vylepšení jako u Kompostéru — progress bar, přehledné info o snížení šance vran a kolik vás stojí příští level.</p>
+    </div>
+    <div class="card gold">
+      <span class="card-icon">💰</span>
+      <h3>Příspěvky</h3>
+      <p>Po přispění se v kanálu zobrazí oznámení kdo kolik dal a jestli došlo k upgradu. Vše se smaže po 15 sekundách, aby nezahltilo chat.</p>
+    </div>
+    <div class="card purple">
+      <span class="card-icon">📊</span>
+      <h3>Lepší popisy úrovní</h3>
+      <p>Přehled bonusů je teď zkompaktnější — růst, cooldown i šance hnojení na jednom řádku bez zbytečného balastu.</p>
+    </div>
+  </div>
+
+  <!-- LEADERBOARD -->
+  <div class="section-title"><span class="icon">🏆</span> Žebříčky</div>
+
+  <div class="cards">
+    <div class="card gold">
+      <span class="card-icon">🥇</span>
+      <h3>Medaile pro top 3</h3>
+      <p>První tři místa jsou teď označena zlatou 🥇, stříbrnou 🥈 a bronzovou 🥉 medailí.</p>
+    </div>
+    <div class="card blue">
+      <span class="card-icon">📌</span>
+      <h3>Vaše pozice</h3>
+      <p>Tlačítko „Moje pozice" funguje spolehlivěji — ukáže vás i když jste na jiné stránce žebříčku.</p>
+    </div>
+    <div class="card green">
+      <span class="card-icon">🕐</span>
+      <h3>Čas poslední aktualizace</h3>
+      <p>V patičce žebříčku vidíte přesný čas poslední aktualizace dat, aby bylo jasné jak čerstvá čísla jsou.</p>
+    </div>
+  </div>
+
+  <!-- OPRAVY -->
+  <div class="section-title"><span class="icon">🔧</span> Opravené problémy</div>
+
+  <div class="fix-list">
+    <div class="fix-item">
+      <span class="fix-icon">🔄</span>
+      <div class="fix-body">
+        <h4>Bot si pamatuje farmu i po restartu</h4>
+        <p>Velká oprava! Po restartu bota se farma, kompostér, strašák i žebříčky automaticky obnoví — tlačítka fungují dál a embed se aktualizuje. Dříve se po restartu vše „zaseklo".</p>
+      </div>
+    </div>
+    <div class="fix-item">
+      <span class="fix-icon">⚡</span>
+      <div class="fix-body">
+        <h4>Rychlejší reakce tlačítek</h4>
+        <p>Zjednodušená logika uvnitř bota znamená, že tlačítka reagují svižněji a je méně pravděpodobné, že se zobrazí chyba při klikání.</p>
+      </div>
+    </div>
+    <div class="fix-item">
+      <span class="fix-icon">🐦‍⬛</span>
+      <div class="fix-body">
+        <h4>Vrány se již nezasekávají</h4>
+        <p>Pokud minihra plašení vran nešla přerušit nebo se zasekla, bot teď situaci sám rozpozná a správně vyřeší.</p>
+      </div>
+    </div>
+    <div class="fix-item">
+      <span class="fix-icon">💬</span>
+      <div class="fix-body">
+        <h4>Přehledné texty ve všech jazycích</h4>
+        <p>Všechny zprávy, tlačítka a popisky byly přepsány — odstraněny překlepy, zkráceny příliš dlouhé texty a přidány emoji pro lepší orientaci.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="corn-row">🌽🌱🌽🌱🌽</div>
+    <p>Dobrou úrodu a šťastné farmaření! 🚜</p>
+  </footer>
+
+</div>
+</body>
+</html>
