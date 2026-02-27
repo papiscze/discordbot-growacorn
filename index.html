@@ -349,7 +349,7 @@ body::before {
 /* ── CROP CARDS ── */
 .crop-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
   gap: 14px;
   margin-top: 8px;
 }
@@ -364,9 +364,12 @@ body::before {
 }
 .crop-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
 
+.cc-jahody   { background: linear-gradient(145deg, #fff0f4, #ffd6e0); border-color: rgba(210,50,80,0.3); }
 .cc-kukurice { background: linear-gradient(145deg, #fffae8, #fef0bc); border-color: rgba(212,144,10,0.3); }
-.cc-pomerance { background: linear-gradient(145deg, #fff4e6, #ffe8c0); border-color: rgba(230,140,30,0.3); }
 .cc-rajcata  { background: linear-gradient(145deg, #fff0ee, #ffddda); border-color: rgba(200,60,50,0.3); }
+.cc-papriky  { background: linear-gradient(145deg, #f0faf0, #d8f0d8); border-color: rgba(60,160,60,0.3); }
+.cc-pomerance { background: linear-gradient(145deg, #fff4e6, #ffe8c0); border-color: rgba(230,140,30,0.3); }
+.cc-banany   { background: linear-gradient(145deg, #fffce0, #fff0a0); border-color: rgba(200,170,20,0.35); }
 .cc-boruvky  { background: linear-gradient(145deg, #f5f0ff, #e8d8ff); border-color: rgba(100,60,180,0.25); }
 
 .crop-emoji { font-size: 2.8rem; line-height: 1; display: block; margin-bottom: 12px; }
@@ -724,7 +727,7 @@ code {
   <p class="hero-desc">Kompletní průvodce pro nové i zkušené farmáře — od zalití po sklizeň</p>
   <div class="hero-tags">
     <span class="htag">🤝 Komunitní spolupráce</span>
-    <span class="htag">🌽🍊🍅🫐 4 plodiny</span>
+    <span class="htag">🌽🍊🍅🫐🍓🍌🫑 7 plodin</span>
     <span class="htag">🎮 5 miniher</span>
     <span class="htag">💰 Sbírání mincí</span>
     <span class="htag">⬆️ Vylepšení</span>
@@ -835,7 +838,7 @@ code {
     <h3>🚜 Sklidit při 95 %+ růstu</h3>
     <p>Jakmile plodina dosáhne <strong>95 % růstu</strong>, objeví se tlačítko sklizně. Minihra sklizně trvá <strong>10 sekund</strong> — celý server kliká a sbírá. Po sklizni pokladna farmy dostane základní odměnu dle plodiny plus bonus za sazenice. Každý aktivní hráč dostane osobní mince za svou aktivitu.</p>
     <div class="chips">
-      <span class="chip">🌽 Základní odměna 50–320 💰 dle plodiny</span>
+      <span class="chip">🌽 Základní odměna 30–320 💰 dle plodiny</span>
       <span class="chip g">+5 mincí za každou sazenici</span>
     </div>
   </div>
@@ -852,7 +855,7 @@ code {
 <div id="plodiny" class="sec">
   <div class="sec-icon ic-gold">🌾</div>
   <div class="sec-text">
-    <h2>Čtyři plodiny</h2>
+    <h2>Sedm plodin</h2>
     <p>Každá s jiným tempem, obtížností a odměnami — komunita hlasuje po každé sklizni</p>
   </div>
 </div>
@@ -862,13 +865,34 @@ code {
   <div>Po každé sklizni (i na nové farmě) proběhne <strong>20sekundové hlasování</strong> — každý člen může hlasovat pro jednu plodinu. Výsledky se zobrazují živě. Vyhrává plodina s nejvíce hlasy, při remíze nebo bez hlasů se zasadí 🌽 kukuřice.</div>
 </div>
 
-<div class="crop-grid" style="margin-top: 20px;">
+<!-- Obtížnost: Snadná -->
+<div style="margin-top: 24px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⭐ Snadná</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="crop-grid">
+
+  <div class="crop-card cc-jahody">
+    <span class="crop-emoji">🍓</span>
+    <div class="crop-name">Jahody</div>
+    <div class="crop-diff">⭐ Snadná · Nejrychlejší cyklus</div>
+    <div class="crop-desc">Rychle rostou, rychle usychají. Ideální pro hyperaktivní servery online celý den.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+4,0 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">2–12 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">15–60 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">30–90 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">7 💰</span></div>
+    </div>
+    <div class="crop-vote-note">🍓🌸🌱 Sklizňová tlačítka</div>
+  </div>
 
   <div class="crop-card cc-kukurice">
     <span class="crop-emoji">🌽</span>
     <div class="crop-name">Kukuřice</div>
     <div class="crop-diff">⭐ Snadná · Výchozí plodina</div>
-    <div class="crop-desc">Klasika. Rychlý růst, spolehlivá odměna. Ideální pro méně aktivní servery.</div>
+    <div class="crop-desc">Klasika. Spolehlivý růst, bezpečný cooldown, dobrá odměna. Vhodná pro každý server.</div>
     <div class="crop-stats">
       <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+2,5 %</span></div>
       <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">3–20 min</span></div>
@@ -877,6 +901,46 @@ code {
       <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">10 💰</span></div>
     </div>
     <div class="crop-vote-note">🌽🌾 Sklizňová tlačítka</div>
+  </div>
+
+</div>
+
+<!-- Obtížnost: Střední -->
+<div style="margin-top: 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⭐⭐ Střední</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="crop-grid">
+
+  <div class="crop-card cc-rajcata">
+    <span class="crop-emoji">🍅</span>
+    <div class="crop-name">Rajčata</div>
+    <div class="crop-diff">⭐⭐ Střední · Rychlý cyklus</div>
+    <div class="crop-desc">Rostou rychle, ale usychají dřív. Vhodné pro aktivní servery, které jsou online celý den.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+3,2 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">2,5–15 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">20–90 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">40–120 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">8 💰</span></div>
+    </div>
+    <div class="crop-vote-note">🍅🌿🌱 Sklizňová tlačítka</div>
+  </div>
+
+  <div class="crop-card cc-papriky">
+    <span class="crop-emoji">🫑</span>
+    <div class="crop-name">Papriky</div>
+    <div class="crop-diff">⭐⭐ Střední · Vyvážená volba</div>
+    <div class="crop-desc">Vyvážená plodina. Ani rychlé, ani pomalé — slušná odměna za pravidelnou péči.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+2,8 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">3,3–18 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">25–100 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">60–170 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">11 💰</span></div>
+    </div>
+    <div class="crop-vote-note">🫑🌶️🌿 Sklizňová tlačítka</div>
   </div>
 
   <div class="crop-card cc-pomerance">
@@ -894,30 +958,40 @@ code {
     <div class="crop-vote-note">🍊🍋🌿 Sklizňová tlačítka</div>
   </div>
 
-  <div class="crop-card cc-rajcata">
-    <span class="crop-emoji">🍅</span>
-    <div class="crop-name">Rajčata</div>
-    <div class="crop-diff">⭐⭐ Střední · Rychlý cyklus</div>
-    <div class="crop-desc">Rostou rychle, ale usychají dřív. Vhodné pro aktivní servery, které jsou online celý den.</div>
+</div>
+
+<!-- Obtížnost: Těžká -->
+<div style="margin-top: 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⭐⭐⭐ Těžká</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="crop-grid">
+
+  <div class="crop-card cc-banany">
+    <span class="crop-emoji">🍌</span>
+    <div class="crop-name">Banány</div>
+    <div class="crop-diff">⭐⭐⭐ Těžká · Tropická výzva</div>
+    <div class="crop-desc">Tropická výzva. Pomalu, ale s výraznou odměnou pro trpělivé a koordinované servery.</div>
     <div class="crop-stats">
-      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+3,2 %</span></div>
-      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">2,5–15 min</span></div>
-      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">20–90 min</span></div>
-      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">40–120 💰</span></div>
-      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">8 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+1,8 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">4,5–25 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">50–160 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">100–270 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">16 💰</span></div>
     </div>
-    <div class="crop-vote-note">🍅🌿🌱 Sklizňová tlačítka</div>
+    <div class="crop-vote-note">🍌🌿🌾 Sklizňová tlačítka</div>
   </div>
 
   <div class="crop-card cc-boruvky">
     <span class="crop-emoji">🫐</span>
     <div class="crop-name">Borůvky</div>
     <div class="crop-diff">⭐⭐⭐ Těžká · Obří odměna</div>
-    <div class="crop-desc">Pomalé jako borůvkový keř. Obří odměna pro trpělivé farmáře. Dlouhý cyklus, ale vyplatí se.</div>
+    <div class="crop-desc">Pomalé jako borůvkový keř. Obří odměna pro vytrvalé farmáře. Nejvyšší výkup ze všech.</div>
     <div class="crop-stats">
       <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+1,6 %</span></div>
-      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">5–27 min</span></div>
-      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">60–180 min</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">5–23 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">60–150 min</span></div>
       <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">120–320 💰</span></div>
       <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">18 💰</span></div>
     </div>
@@ -951,11 +1025,11 @@ code {
     <span class="mg-badge mb-gold">Hlavní minihra</span>
   </div>
   <p>Hlavní událost farmy. Jakmile plodina dozraje, celý server má <strong>10 sekund</strong> na klikání na sklizňová tlačítka (liší se dle plodiny — 🌽🌾 u kukuřice, 🍊🍋 u pomerančů, apod.). Za každý klik dostaneš mince přímo na účet.</p>
-  <p>Po skončení dostane serverová pokladna základní odměnu (50–320 💰 dle plodiny) plus <strong>bonus 5 mincí za každou nasbíranou sazenici</strong>. Osobní odměny se rozdělí kombinací kliků a podílu z bonusového poolu.</p>
+  <p>Po skončení dostane serverová pokladna základní odměnu (30–320 💰 dle plodiny) plus <strong>bonus 5 mincí za každou nasbíranou sazenici</strong>. Osobní odměny se rozdělí kombinací kliků a podílu z bonusového poolu.</p>
   <div class="mg-grid">
     <div class="mg-stat"><strong>⏱️ Čas</strong><span>10 sekund</span></div>
-    <div class="mg-stat"><strong>💰 Za klik</strong><span>8–18 💰 dle plodiny</span></div>
-    <div class="mg-stat"><strong>🏦 Bonus farmy</strong><span>50–320 💰</span></div>
+    <div class="mg-stat"><strong>💰 Za klik</strong><span>7–18 💰 dle plodiny</span></div>
+    <div class="mg-stat"><strong>🏦 Bonus farmy</strong><span>30–320 💰</span></div>
     <div class="mg-stat"><strong>🌱 + za sazenice</strong><span>+5 💰 / ks</span></div>
   </div>
 </div>
@@ -1101,7 +1175,7 @@ code {
   <div class="coin-card">
     <span class="ci">🚜</span>
     <h3>Sklizeň</h3>
-    <p>Za každý klik při sklizni <strong>8–18 mincí</strong> dle plodiny. Více kliků = více výdělku.</p>
+    <p>Za každý klik při sklizni <strong>7–18 mincí</strong> dle plodiny. Více kliků = více výdělku.</p>
     <p class="cn">Navíc serverová pokladna dostane základní odměnu dle plodiny.</p>
   </div>
   <div class="coin-card">
