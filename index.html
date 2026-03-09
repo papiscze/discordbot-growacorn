@@ -370,6 +370,7 @@ body::before {
 .cc-papriky  { background: linear-gradient(145deg, #f0faf0, #d8f0d8); border-color: rgba(60,160,60,0.3); }
 .cc-pomerance { background: linear-gradient(145deg, #fff4e6, #ffe8c0); border-color: rgba(230,140,30,0.3); }
 .cc-banany   { background: linear-gradient(145deg, #fffce0, #fff0a0); border-color: rgba(200,170,20,0.35); }
+.cc-brambory { background: linear-gradient(145deg, #f5efe0, #e8d4b0); border-color: rgba(140,95,40,0.3); }
 .cc-boruvky  { background: linear-gradient(145deg, #f5f0ff, #e8d8ff); border-color: rgba(100,60,180,0.25); }
 
 .crop-emoji { font-size: 2.8rem; line-height: 1; display: block; margin-bottom: 12px; }
@@ -727,7 +728,7 @@ code {
   <p class="hero-desc">Kompletní průvodce pro nové i zkušené farmáře — od zalití po sklizeň</p>
   <div class="hero-tags">
     <span class="htag">🤝 Komunitní spolupráce</span>
-    <span class="htag">🌽🍊🍅🫐🍓🍌🫑 7 plodin</span>
+    <span class="htag">🌽🍊🍅🫐🍓🥔🍌🫑 8 plodin</span>
     <span class="htag">🎮 5 miniher</span>
     <span class="htag">💰 Sbírání mincí</span>
     <span class="htag">⬆️ Vylepšení</span>
@@ -798,14 +799,14 @@ code {
     <div class="chips">
       <span class="chip">💰 10 mincí za zalití</span>
       <span class="chip">⏳ Cooldown 3–27 min dle plodiny</span>
-      <span class="chip r">25 % šance na selhání zalití</span>
+      <span class="chip r">20 % šance na selhání zalití</span>
     </div>
   </div>
 
   <div class="step">
     <div class="step-dot dot-sky">3</div>
-    <h3>🐦‍⬛ Bránit pole před vránami</h3>
-    <p>Kdykoliv se mohou na poli objevit <strong>vrány</strong>. Pokud je nikdo nevyplaší do <strong>3 minut</strong>, pole zaplatí pokutu — plodina ztratí 10 % růstu a zásoby sazenic se sníží o 10 %. Při výskytu vran se zobrazí červené tlačítko 🦅 — kliknutí spustí minihru plašení.</p>
+    <h3>🐦‍⬛ Bránit pole před škůdci</h3>
+    <p>Kdykoliv se mohou na poli objevit <strong>škůdci</strong>. Pokud je nikdo nezažene do <strong>3 minut</strong>, pole zaplatí pokutu — plodina ztratí 10 % růstu a zásoby sazenic se sníží o 10 %. Při výskytu škůdců se zobrazí červené tlačítko 🦅 — kliknutí spustí minihru zahánění.</p>
     <div class="chips">
       <span class="chip r">⚠️ Pokuta: −10 % růstu + −10 % sazenic</span>
       <span class="chip">⏳ Okno 3 minuty</span>
@@ -825,10 +826,10 @@ code {
   <div class="step">
     <div class="step-dot dot-red">5</div>
     <h3>✨ Vzácné události</h3>
-    <p>Při každém zalití s růstem ≥ 50 % existuje <strong>15% šance</strong>, že se objeví vzácný živočich — <strong>beruška 🐞</strong> (100 💰), <strong>kobylka 🦗</strong> (120 💰) nebo <strong>motýl 🦋</strong> (80 💰). Kdo klikne na správné tlačítko nejrychleji, získá odměnu. Trvá jen 3 sekundy!</p>
+    <p>Při každém zalití s růstem ≥ 50 % existuje <strong>15% šance</strong>, že se objeví vzácný živočich — <strong>beruška 🐞</strong> (100 💰), <strong>kobylka 🦗</strong> (120 💰) nebo <strong>motýl 🦋</strong> (80 💰). Kdo klikne na správné tlačítko nejrychleji, získá odměnu. Trvá jen <strong>4 sekundy</strong> (v Začátečnickém módu 7 sekund)!</p>
     <div class="chips">
       <span class="chip b">🐞 100 / 🦗 120 / 🦋 80 mincí</span>
-      <span class="chip">⏱️ Jen 3 sekundy!</span>
+      <span class="chip">⏱️ 4 s / 7 s v začátečníkovi</span>
       <span class="chip">15 % šance při růstu ≥ 50 %</span>
     </div>
   </div>
@@ -855,7 +856,7 @@ code {
 <div id="plodiny" class="sec">
   <div class="sec-icon ic-gold">🌾</div>
   <div class="sec-text">
-    <h2>Sedm plodin</h2>
+    <h2>Osm plodin</h2>
     <p>Každá s jiným tempem, obtížností a odměnami — komunita hlasuje po každé sklizni</p>
   </div>
 </div>
@@ -909,6 +910,25 @@ code {
       <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~13 h</span></div>
     </div>
     <div class="crop-vote-note">🌽🌾 Sklizňová tlačítka</div>
+  </div>
+
+  <div class="crop-card cc-brambory">
+    <span class="crop-emoji">🥔</span>
+    <div class="crop-name">Brambory</div>
+    <div class="crop-diff">⭐ Snadná · Odolná volba</div>
+    <div class="crop-desc">Nenáročné a odolné. Slušná odměna bez zbytečného stresu — skvělé pro méně aktivní servery.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+3,0 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">2,7–16 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">23–108 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">45–130 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">9 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~1,5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~5,5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~9 h</span></div>
+    </div>
+    <div class="crop-vote-note">🥔🌱🌿🍂 Sklizňová tlačítka</div>
   </div>
 
 </div>
@@ -1067,13 +1087,13 @@ code {
   <div class="mg-head">
     <span class="mg-emoji">🐦‍⬛</span>
     <div>
-      <div class="mg-title">Plašení vran</div>
-      <div class="mg-sub">Spustí se kliknutím na 🦅 při výskytu vran</div>
+      <div class="mg-title">Zahánění škůdců</div>
+      <div class="mg-sub">Spustí se kliknutím na 🦅 při výskytu škůdců</div>
     </div>
     <span class="mg-badge mb-red">Záchrana pole</span>
   </div>
-  <p>Vrány přistávají <strong>náhodně</strong> — nejčastěji po zalití nebo na velkém poli. Zobrazí se varování v embedu a červené tlačítko 🦅. Kdo na něj klikne, spustí <strong>10sekundovou minihru</strong> — celý server kliká na ptačí emoji (🐦‍⬛🦅🦉🪶💨).</p>
-  <p>Čím více kliků, tím více mincí každý dostane. Pokud <strong>nikdo neplašil do 3 minut</strong>, vrány odletí samy, ale pole zaplatí trest: <strong>−10 % růstu a −10 % sazenic</strong>.</p>
+  <p>Škůdci se objevují <strong>náhodně</strong> — nejčastěji po zalití nebo na velkém poli. Zobrazí se varování v embedu a červené tlačítko 🦅. Kdo na něj klikne, spustí <strong>10sekundovou minihru</strong> — celý server kliká na ptačí emoji (🐦‍⬛🦅🦉🪶💨).</p>
+  <p>Čím více kliků, tím více mincí každý dostane. Pokud <strong>nikdo škůdce nezahnal do 3 minut</strong>, odletí sami, ale pole zaplatí trest: <strong>−10 % růstu a −10 % sazenic</strong>.</p>
   <div class="mg-grid">
     <div class="mg-stat"><strong>⏱️ Čas</strong><span>10 sekund</span></div>
     <div class="mg-stat"><strong>💰 Za klik</strong><span>5 mincí</span></div>
@@ -1113,12 +1133,13 @@ code {
     </div>
     <span class="mg-badge mb-purple">Vzácná minihra</span>
   </div>
-  <p>Při zalití s růstem ≥ 50 % je <strong>15% šance</strong>, že se na poli objeví vzácný živočich. Embed okamžitě změní obsah a zobrazí tlačítka — jedno správné, ostatní návnady. Kdo klikne na správné tlačítko, získá celou odměnu. Trvá jen <strong>3 sekundy!</strong></p>
+  <p>Při zalití s růstem ≥ 50 % je <strong>15% šance</strong>, že se na poli objeví vzácný živočich. Embed okamžitě změní obsah a zobrazí tlačítka — jedno správné, ostatní návnady. Kdo klikne na správné tlačítko, získá celou odměnu. Trvá jen <strong>4 sekundy</strong> (v Začátečnickém módu 7 sekund)!</p>
   <div class="mg-grid">
     <div class="mg-stat"><strong>🐞 Beruška</strong><span>100 mincí</span></div>
     <div class="mg-stat"><strong>🦗 Kobylka</strong><span>120 mincí</span></div>
     <div class="mg-stat"><strong>🦋 Motýl</strong><span>80 mincí</span></div>
-    <div class="mg-stat"><strong>⏱️ Čas</strong><span>pouze 3 sekundy</span></div>
+    <div class="mg-stat"><strong>⏱️ Čas (normální)</strong><span>4 sekundy</span></div>
+    <div class="mg-stat"><strong>⏱️ Čas (začátečník)</strong><span>7 sekund</span></div>
     <div class="mg-stat"><strong>🎲 Šance</strong><span>15 % při růstu ≥ 50 %</span></div>
   </div>
 </div>
@@ -1144,7 +1165,7 @@ code {
 
 <div class="callout gold" style="margin-top: 8px;">
   <span class="callout-icon">💡</span>
-  <div><strong>Tip:</strong> Všechny klíkací minihry (sklizeň, vrány, sazenice) jsou veřejné — čím více členů kliká, tím více mincí se celkově vydělá. Upozorněte ostatní, když probíhá sklizeň nebo přistály vrány!</div>
+  <div><strong>Tip:</strong> Všechny klikací minihry (sklizeň, škůdci, sazenice) jsou veřejné — čím více členů kliká, tím více mincí se celkově vydělá. Upozorněte ostatní, když probíhá sklizeň nebo se objevili škůdci!</div>
 </div>
 
 <!-- VYLEPŠENÍ -->
@@ -1172,8 +1193,8 @@ code {
   <div class="upg">
     <div class="upg-ico">🦅</div>
     <div class="upg-body">
-      <h4>Strašák na vrány</h4>
-      <p>Snižuje pravděpodobnost výskytu vran na poli i při zalévání. Každá úroveň snižuje šanci o 2 %. Na maximální úrovni je šance na vrány o <strong>40 % nižší</strong> než bez strašáka — méně přerušení a klidnější farmaření.</p>
+      <h4>Ochrana před škůdci</h4>
+      <p>Snižuje pravděpodobnost výskytu škůdců na poli i při zalévání. Každá úroveň snižuje šanci o 2 %. Na maximální úrovni je šance na škůdce o <strong>40 % nižší</strong> než bez ochrany — méně přerušení a klidnější farmaření.</p>
     </div>
     <div class="upg-pill">Max.<br>Lv. 20</div>
   </div>
@@ -1181,7 +1202,7 @@ code {
 
 <div class="callout green" style="margin-top: 14px;">
   <span class="callout-icon">🌿</span>
-  <div><strong>Jak přispívat?</strong> Použij <code>/farma_komposter</code> nebo <code>/farma_strasak</code> a klikni na tlačítko „Přispět mincemi". Zadáš částku ze svého osobního konta — mince jdou přímo na vylepšení. Upgrade proběhne automaticky jakmile se nashromáždí dost prostředků.</div>
+  <div><strong>Jak přispívat?</strong> Použij <code>/farm_komposter</code> nebo <code>/farm_ochrana</code> a klikni na tlačítko „Přispět mincemi". Zadáš částku ze svého osobního konta — mince jdou přímo na vylepšení. Upgrade proběhne automaticky jakmile se nashromáždí dost prostředků.</div>
 </div>
 
 <!-- MINCE -->
@@ -1208,15 +1229,15 @@ code {
   </div>
   <div class="coin-card">
     <span class="ci">🐦‍⬛</span>
-    <h3>Plašení vran</h3>
-    <p>Za každý klik při plašení vran <strong>5 mincí</strong>. Čím více lidí plašíte, tím více se vydělá celkově.</p>
-    <p class="cn">Pokud nikdo neplašil, nikdo nic nedostane — jen pokuta za pole.</p>
+    <h3>Zahánění škůdců</h3>
+    <p>Za každý klik při zahánění škůdců <strong>5 mincí</strong>. Čím více lidí se zapojí, tím více se vydělá celkově.</p>
+    <p class="cn">Pokud nikdo škůdce nezahnal, nikdo nic nedostane — jen pokuta za pole.</p>
   </div>
   <div class="coin-card">
     <span class="ci">✨</span>
     <h3>Vzácný nález</h3>
     <p>Kdo klikne správně, dostane celou odměnu: <strong>80–120 mincí</strong> dle živočicha.</p>
-    <p class="cn">Jen 3 sekundy a jen jeden správný klik!</p>
+    <p class="cn">Jen 4 sekundy (7 s v začátečníkovi) a jen jeden správný klik!</p>
   </div>
   <div class="coin-card">
     <span class="ci">🌱</span>
@@ -1234,7 +1255,7 @@ code {
 
 <div class="callout gold" style="margin-top: 16px;">
   <span class="callout-icon">💡</span>
-  <div><strong>Osobní mince</strong> se zobrazují ve statistikách (<code>/farma_stats</code>) a lze je investovat do vylepšení. <strong>Serverová pokladna</strong> je separátní — roste sklizněmi a slouží jako ukazatel celkové síly farmy v žebříčku serverů.</div>
+  <div><strong>Osobní mince</strong> se zobrazují ve statistikách (<code>/farm_stats</code>) a lze je investovat do vylepšení. <strong>Serverová pokladna</strong> je separátní — roste sklizněmi a slouží jako ukazatel celkové síly farmy v žebříčku serverů.</div>
 </div>
 
 <!-- ZAČÁTEČNÍK -->
@@ -1263,11 +1284,11 @@ code {
     </div>
     <div class="bp">
       <span class="bpe">💧</span>
-      <div><strong>Zalití vždy funguje</strong><small>žádné náhodné selhání (0% místo 15%)</small></div>
+      <div><strong>Zalití vždy funguje</strong><small>žádné náhodné selhání (0 % místo 20 %)</small></div>
     </div>
     <div class="bp">
       <span class="bpe">🐦‍⬛</span>
-      <div><strong>Vrány 3× méně</strong><small>klidnější začátky, méně přerušení</small></div>
+      <div><strong>Škůdci 3× méně</strong><small>klidnější začátky, méně přerušení</small></div>
     </div>
   </div>
 </div>
@@ -1285,15 +1306,15 @@ code {
   <div class="cmd">
     <span class="cmd-ico">🌽</span>
     <div class="cmd-body">
-      <div class="cmd-slug">/farma_farm</div>
+      <div class="cmd-slug">/farm</div>
       <h4>Přehled farmy</h4>
-      <p>Hlavní embed farmy — obrázek, ukazatele růstu a vody, aktuálně pěstovaná plodina, tlačítka pro zalití, plašení vran a sklizeň. Zde se spouštějí všechny minihry.</p>
+      <p>Hlavní embed farmy — obrázek, ukazatele růstu a vody, aktuálně pěstovaná plodina, tlačítka pro zalití, zahánění škůdců a sklizeň. Zde se spouštějí všechny minihry.</p>
     </div>
   </div>
   <div class="cmd">
     <span class="cmd-ico">♻️</span>
     <div class="cmd-body">
-      <div class="cmd-slug">/farma_komposter</div>
+      <div class="cmd-slug">/farm_komposter</div>
       <h4>Kompostér</h4>
       <p>Zobrazí stav komunitního kompostéru — aktuální úroveň, bonusy (kratší cooldown, vyšší růst, šance na hnojení) a progress k dalšímu upgradu. Umožňuje přispět mincemi.</p>
     </div>
@@ -1301,15 +1322,15 @@ code {
   <div class="cmd">
     <span class="cmd-ico">🦅</span>
     <div class="cmd-body">
-      <div class="cmd-slug">/farma_strasak</div>
-      <h4>Strašák</h4>
-      <p>Zobrazí stav strašáka — aktuální úroveň, snížení šance vran a progress. Umožňuje přispět mincemi na vylepšení.</p>
+      <div class="cmd-slug">/farm_ochrana</div>
+      <h4>Ochrana před škůdci</h4>
+      <p>Zobrazí stav ochrany před škůdci — aktuální úroveň, snížení šance výskytu škůdců a progress k dalšímu upgradu. Umožňuje přispět mincemi na vylepšení.</p>
     </div>
   </div>
   <div class="cmd">
     <span class="cmd-ico">📊</span>
     <div class="cmd-body">
-      <div class="cmd-slug">/farma_stats</div>
+      <div class="cmd-slug">/farm_stats</div>
       <h4>Žebříčky</h4>
       <p>Interaktivní žebříčky — Top Farmy (serverová pokladna), Top Sklizně a Top Nasbírané mince. Přepínej mezi lokálním (tvůj server) a globálním pohledem. Tlačítko 📌 najde tvoji pozici.</p>
     </div>
@@ -1317,9 +1338,33 @@ code {
   <div class="cmd">
     <span class="cmd-ico">✏️</span>
     <div class="cmd-body">
-      <div class="cmd-slug">/farma_jmeno [jméno]</div>
+      <div class="cmd-slug">/farm_jmeno [jméno]</div>
       <h4>Přejmenování farmy</h4>
       <p>Moderátoři mohou pojmenovat serverovou farmu (max. 50 znaků). Jméno se zobrazuje v nadpisu hlavního embedu a v žebříčku serverů.</p>
+    </div>
+  </div>
+</div>
+
+<div class="callout sky" style="margin-top: 16px;">
+  <span class="callout-icon">🔑</span>
+  <div><strong>Admin příkazy</strong> — vyžadují oprávnění <em>Správa serveru</em>.</div>
+</div>
+
+<div class="cmds" style="margin-top: 10px;">
+  <div class="cmd">
+    <span class="cmd-ico">🔀</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_admin_force_plodina [plodina]</div>
+      <h4>Násilná změna plodiny</h4>
+      <p>Okamžitě přeruší aktuální pěstování a nastaví novou plodinu od 0 %. Platné ID plodiny: <code>jahody</code>, <code>brambory</code>, <code>kukurice</code>, <code>rajcata</code>, <code>papriky</code>, <code>pomerance</code>, <code>banany</code>, <code>boruvky</code>. Embed farmy se automaticky překreslí.</p>
+    </div>
+  </div>
+  <div class="cmd">
+    <span class="cmd-ico">🗑️</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_admin_clean</div>
+      <h4>Vyčistit staré záznamy</h4>
+      <p>Smaže zastaralé individuální záznamy farmy z databáze. Použijte při migraci ze starší verze bota.</p>
     </div>
   </div>
 </div>
@@ -1337,7 +1382,7 @@ code {
   <div class="tip-card">
     <span class="ti">🗳️</span>
     <h3>Hlasujte strategicky</h3>
-    <p>Pokud je server aktivní celý den, zvolte rajčata (rychlý cyklus). Méně aktivní server ocení kukuřici nebo borůvky, kde voda odchází pomaleji.</p>
+    <p>Pokud je server aktivní celý den, zvolte jahody nebo rajčata (nejrychlejší cyklus). Méně aktivní server ocení brambory, kukuřici nebo borůvky, kde voda odchází pomaleji a je více času na reakci.</p>
   </div>
   <div class="tip-card">
     <span class="ti">🔔</span>
@@ -1361,8 +1406,8 @@ code {
   </div>
   <div class="tip-card">
     <span class="ti">👀</span>
-    <h3>Vrány — reagujte okamžitě</h3>
-    <p>Na vyplašení vran máte 3 minuty. Výskyt se zobrazí v embedu a červené tlačítko 🦅 bude okamžitě k dispozici.</p>
+    <h3>Škůdci — reagujte okamžitě</h3>
+    <p>Na zahnání škůdců máte 3 minuty. Výskyt se zobrazí v embedu a červené tlačítko 🦅 bude okamžitě k dispozici.</p>
   </div>
   <div class="tip-card">
     <span class="ti">🎯</span>
@@ -1372,7 +1417,7 @@ code {
   <div class="tip-card">
     <span class="ti">✨</span>
     <h3>Pozor na vzácné nálezy</h3>
-    <p>Máte jen 3 sekundy a musíte kliknout na správné tlačítko — ostatní jsou návnady. Kobylka (120 💰) je nejvzácnější odměna!</p>
+    <p>Máte jen 4 sekundy (v Začátečnickém módu 7 sekund) a musíte kliknout na správné tlačítko — ostatní jsou návnady. Kobylka (120 💰) je nejvzácnější odměna!</p>
   </div>
 </div>
 
@@ -1394,7 +1439,7 @@ code {
 
   <div class="faq-item">
     <div class="faq-q">Co se stane, když plodina uschne?</div>
-    <p class="faq-a">Farma se vrátí na 0 % růstu a 0 % vody. Pole je „mrtvé" — tlačítko zalití se změní na „Zasadit / Zalit" a prvním zalitím (po novém hlasování o plodině) začne nový cyklus. Zásoby sazenic zůstanou zachovány, pokud vrány nestihly farmu potrestat.</p>
+    <p class="faq-a">Farma se vrátí na 0 % růstu a 0 % vody. Pole je „mrtvé" — tlačítko zalití se změní na „Zasadit / Zalit" a prvním zalitím (po novém hlasování o plodině) začne nový cyklus. Zásoby sazenic zůstanou zachovány, pokud škůdci nestihli farmu potrestat.</p>
   </div>
 
   <div class="faq-item">
@@ -1404,7 +1449,7 @@ code {
 
   <div class="faq-item">
     <div class="faq-q">Proč mi zalití „nerostla" — footer říkal selhání?</div>
-    <p class="faq-a">Při každém standardním zalití (mimo Začátečnický mód) existuje <strong>15% šance selhání</strong> — voda se doplní na 100 %, ale plodina o žádné procento nevyroste. Odměna 10 mincí přijde i při selhání. V Začátečnickém módu je šance selhání 0 %.</p>
+    <p class="faq-a">Při každém standardním zalití (mimo Začátečnický mód) existuje <strong>20% šance selhání</strong> — voda se doplní na 100 %, ale plodina o žádné procento nevyroste. Odměna 10 mincí přijde i při selhání. V Začátečnickém módu je šance selhání 0 %.</p>
   </div>
 
   <div class="faq-item">
@@ -1414,22 +1459,27 @@ code {
 
   <div class="faq-item">
     <div class="faq-q">Jak fungují vzácné nálezy — musím kliknout rychle?</div>
-    <p class="faq-a">Ano — vzácný nález trvá jen <strong>3 sekundy</strong> a zobrazí se více tlačítek, ale jen jedno je správné. Ostatní jsou návnady. Kdo klikne na správné nejrychleji, bere celou odměnu (80–120 mincí). Pokud nikdo neklikne správně, nález zmizí bez odměny.</p>
+    <p class="faq-a">Ano — vzácný nález trvá jen <strong>4 sekundy</strong> (7 sekund v Začátečnickém módu) a zobrazí se více tlačítek, ale jen jedno je správné. Ostatní jsou návnady. Kdo klikne na správné nejrychleji, bere celou odměnu (80–120 mincí). Pokud nikdo neklikne správně, nález zmizí bez odměny.</p>
   </div>
 
   <div class="faq-item">
     <div class="faq-q">Jak dlouho trvají minihry?</div>
-    <p class="faq-a">Sklizeň, plašení vran a sběr sazenic trvají standardně <strong>10 sekund</strong> (v Začátečnickém módu 8 sekund). Vzácný nález je speciální — trvá jen <strong>3 sekundy</strong> bez ohledu na mód. Hlasování o plodině trvá vždy <strong>20 sekund</strong>.</p>
+    <p class="faq-a">Sklizeň, zahánění škůdců a sběr sazenic trvají standardně <strong>10 sekund</strong> (v Začátečnickém módu 12 sekund). Vzácný nález je speciální — trvá <strong>4 sekundy</strong> v normálním módu a <strong>7 sekund</strong> v Začátečnickém módu. Hlasování o plodině trvá vždy <strong>20 sekund</strong>.</p>
   </div>
 
   <div class="faq-item">
     <div class="faq-q">Co je „Poškozená úroda"?</div>
-    <p class="faq-a">Tento stav nastane, pokud vrány čekaly déle než 3 minuty a farma zaplatila trest (−10 % růstu, −10 % sazenic). V přehledu se zobrazí varování — kliknutím na tlačítko „⚠️ Poškozeno (info)" stav potvrdíte a bude vyřešen.</p>
+    <p class="faq-a">Tento stav nastane, pokud škůdci čekali déle než 3 minuty a farma zaplatila trest (−10 % růstu, −10 % sazenic). V přehledu se zobrazí varování — kliknutím na tlačítko „⚠️ Poškozeno (info)" stav potvrdíte a bude vyřešen.</p>
   </div>
 
   <div class="faq-item">
     <div class="faq-q">Mohu ovlivnit, jaká plodina se bude pěstovat?</div>
-    <p class="faq-a">Ano — každý člen serveru hlasuje po každé sklizni a na nové farmě. Hlas lze i změnit v průběhu 20 sekund. Embed ukazuje živé počítadlo hlasů pro každou plodinu. Vyhrává plodina s nejvíce hlasy, při remíze nebo bez hlasů se zasadí kukuřice.</p>
+    <p class="faq-a">Ano — každý člen serveru hlasuje po každé sklizni a na nové farmě. Hlas lze i změnit v průběhu 20 sekund. Embed ukazuje živé počítadlo hlasů pro každou plodinu. Vyhrává plodina s nejvíce hlasy, při remíze nebo bez hlasů se zasadí kukuřice. Moderátoři navíc mohou příkazem <code>/farm_admin_force_plodina</code> plodinu změnit kdykoli.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Jak funguje příkaz /farm_admin_force_plodina?</div>
+    <p class="faq-a">Tento adminský příkaz okamžitě přeruší aktuální pěstování (bez sklizně, bez odměny) a nastaví novou plodinu od 0 % růstu. Škůdci a aktivní eventy se vymaží, časy zalití se resetují. Farma čeká na první zalití, které spustí nový cyklus s vybranou plodinou. Platná ID: <code>jahody</code>, <code>brambory</code>, <code>kukurice</code>, <code>rajcata</code>, <code>papriky</code>, <code>pomerance</code>, <code>banany</code>, <code>boruvky</code>.</p>
   </div>
 
   <div class="faq-item">
@@ -1439,7 +1489,7 @@ code {
 
   <div class="faq-item">
     <div class="faq-q">Jak se dostat výš v globálním žebříčku?</div>
-    <p class="faq-a">Globální žebříček serverů sleduje výši serverové pokladny. Nejrychleji pokladna roste sklizněmi náročnějších plodin (borůvky dávají až 320 + bonusy za sazenice) a vysokou aktivitou při každé sklizni. Příkaz <code>/farma_stats</code> umí přepínat mezi lokálním a globálním pohledem.</p>
+    <p class="faq-a">Globální žebříček serverů sleduje výši serverové pokladny. Nejrychleji pokladna roste sklizněmi náročnějších plodin (borůvky dávají až 320 + bonusy za sazenice) a vysokou aktivitou při každé sklizni. Příkaz <code>/farm_stats</code> umí přepínat mezi lokálním a globálním pohledem.</p>
   </div>
 
 </div>
@@ -1447,7 +1497,7 @@ code {
 </div><!-- end .page -->
 
 <footer>
-  <span class="fe">🌽 🍊 🍅 🫐</span>
+  <span class="fe">🌽 🍊 🍅 🫐 🍓 🥔 🍌 🫑</span>
   <p><strong>Kukuřičná Farma</strong> — komunitní minihra pro Discord</p>
   <p>Hodně zdaru při farmení a bohatou sklizeň! 🚜</p>
 </footer>
