@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌽 Průvodce Farmou</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --soil:        #1a0f08;
+  --soil-mid:    #2e1a0e;
+  --soil-warm:   #3d2410;
+  --gold:        #d4900a;
+  --gold-bright: #f0ae24;
+  --gold-pale:   #fde490;
+  --gold-mist:   #fef6d8;
+  --green:       #2d6e28;
+  --green-mid:   #4a9940;
+  --green-pale:  #c8edc0;
+  --green-mist:  #edf8e8;
+  --red:         #9e2318;
+  --red-mid:     #c73b2e;
+  --red-pale:    #fad8d4;
+  --sky:         #1e6b8c;
+  --sky-mid:     #3a9bbf;
+  --sky-pale:    #d0eef8;
+  --purple:      #5a2d82;
+  --purple-mid:  #8b4bbf;
+  --purple-pale: #e8d5f8;
+  --night:       #1a2a4a;
+  --night-mid:   #2a4a7a;
+  --night-pale:  #d0e0f8;
+  --paper:       #faf4e8;
+  --paper-dark:  #f2e8d0;
+  --ink:         #1a0f08;
+  --ink-mid:     #4a2e1a;
+  --ink-light:   #7a5a3a;
+  --ink-faint:   #a88060;
+  --line:        rgba(74,46,26,0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.hero {
+  background: var(--soil);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(42,100,35,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 15% 20%, rgba(212,144,10,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 85% 10%, rgba(212,144,10,0.08) 0%, transparent 50%);
+  padding: 80px 24px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-stripe {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--green), var(--gold-bright), var(--green-mid), var(--gold), var(--green));
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212,144,10,0.15);
+  border: 1px solid rgba(212,144,10,0.35);
+  color: var(--gold-pale);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 99px;
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 900;
+  color: var(--gold-pale);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  animation: float 5s ease-in-out infinite;
+}
+.hero h1 em { font-style: italic; color: var(--green-pale); font-weight: 300; }
+.hero-desc {
+  margin-top: 20px;
+  font-size: 1.05rem;
+  color: rgba(253,228,144,0.65);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300;
+}
+.hero-tags {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.htag {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(253,228,144,0.2);
+  color: rgba(253,228,144,0.8);
+  padding: 5px 14px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+}
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,244,232,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  padding: 0 24px;
+  overflow-x: auto; white-space: nowrap;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; gap: 2px; padding: 10px 0;
+}
+.nav a {
+  color: var(--ink-light); text-decoration: none;
+  font-size: 0.82rem; font-weight: 500;
+  padding: 5px 12px; border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.nav a:hover { background: var(--gold-bright); color: var(--soil); }
+
+.page {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 24px 100px;
+  position: relative; z-index: 1;
+}
+
+.sec {
+  display: flex; align-items: flex-start; gap: 18px;
+  margin: 72px 0 28px;
+  padding-bottom: 18px;
+  border-bottom: 1.5px solid var(--line);
+}
+.sec-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0; margin-top: 3px;
+}
+.ic-gold   { background: linear-gradient(135deg, #f0ae24, #d4900a); }
+.ic-green  { background: linear-gradient(135deg, #4a9940, #2d6e28); }
+.ic-red    { background: linear-gradient(135deg, #c73b2e, #9e2318); }
+.ic-sky    { background: linear-gradient(135deg, #3a9bbf, #1e6b8c); }
+.ic-soil   { background: linear-gradient(135deg, #7a5a3a, #3d2410); }
+.ic-purple { background: linear-gradient(135deg, #8b4bbf, #5a2d82); }
+.ic-night  { background: linear-gradient(135deg, #3a6abf, #1a2a5a); }
+.sec-text h2 {
+  font-family: 'Fraunces', serif; font-size: 1.85rem;
+  font-weight: 700; color: var(--ink); line-height: 1.15; letter-spacing: -0.01em;
+}
+.sec-text p { font-size: 0.85rem; color: var(--ink-faint); margin-top: 2px; }
+
+.intro {
+  background: var(--paper-dark); border-radius: 16px;
+  padding: 28px 32px; font-size: 0.97rem; line-height: 1.85;
+  color: var(--ink-mid); border: 1px solid var(--line);
+  position: relative; overflow: hidden;
+}
+.intro::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: var(--gold-bright); border-radius: 4px 0 0 4px;
+}
+.intro strong { color: var(--ink); }
+
+.callout {
+  border-radius: 16px; padding: 22px 26px; margin: 14px 0;
+  font-size: 0.9rem; line-height: 1.7; color: var(--ink-mid);
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.callout-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; }
+.callout strong { color: var(--ink); }
+.callout.gold   { background: #fef8e4; border: 1px solid rgba(212,144,10,0.25); }
+.callout.green  { background: var(--green-mist); border: 1px solid rgba(74,153,64,0.25); }
+.callout.red    { background: var(--red-pale); border: 1px solid rgba(199,59,46,0.25); }
+.callout.sky    { background: var(--sky-pale); border: 1px solid rgba(58,155,191,0.25); }
+.callout.purple { background: var(--purple-pale); border: 1px solid rgba(139,75,191,0.25); }
+.callout.night  { background: #e8f0ff; border: 1px solid rgba(58,106,191,0.3); }
+
+.flow { position: relative; padding-left: 44px; }
+.flow::before {
+  content: ''; position: absolute; left: 19px; top: 24px; bottom: 24px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold-bright) 0%, var(--green-mid) 100%);
+  opacity: 0.3; border-radius: 2px;
+}
+.step { position: relative; padding: 0 0 36px 28px; }
+.step:last-child { padding-bottom: 0; }
+.step-dot {
+  position: absolute; left: -44px; top: 4px;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-weight: 900; font-size: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.dot-gold   { background: linear-gradient(135deg, #f0ae24, #d4900a); color: var(--soil); }
+.dot-green  { background: linear-gradient(135deg, #4a9940, #2d6e28); color: #fff; }
+.dot-sky    { background: linear-gradient(135deg, #3a9bbf, #1e6b8c); color: #fff; }
+.dot-red    { background: linear-gradient(135deg, #c73b2e, #9e2318); color: #fff; }
+.dot-soil   { background: linear-gradient(135deg, #7a5a3a, #3d2410); color: var(--gold-pale); }
+.dot-purple { background: linear-gradient(135deg, #8b4bbf, #5a2d82); color: #fff; }
+.step h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.step p { font-size: 0.91rem; line-height: 1.75; color: var(--ink-mid); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(74,46,26,0.07); border: 1px solid var(--line);
+  color: var(--ink-mid); border-radius: 6px; padding: 3px 10px;
+  font-size: 0.79rem; font-weight: 500;
+}
+.chip.g { background: rgba(74,153,64,0.1); border-color: rgba(74,153,64,0.25); color: var(--green); }
+.chip.r { background: rgba(199,59,46,0.1); border-color: rgba(199,59,46,0.25); color: var(--red); }
+.chip.b { background: rgba(90,45,130,0.1); border-color: rgba(90,45,130,0.25); color: var(--purple); }
+.chip.n { background: rgba(40,80,160,0.1); border-color: rgba(40,80,160,0.25); color: #2a50a0; }
+
+/* ── CROP CARDS ── */
+.crop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  gap: 14px; margin-top: 8px;
+}
+.crop-card {
+  border-radius: 18px; padding: 22px 20px;
+  border: 1.5px solid transparent;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.crop-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+.cc-jahody    { background: linear-gradient(145deg, #fff0f4, #ffd6e0); border-color: rgba(210,50,80,0.3); }
+.cc-kukurice  { background: linear-gradient(145deg, #fffae8, #fef0bc); border-color: rgba(212,144,10,0.3); }
+.cc-rajcata   { background: linear-gradient(145deg, #fff0ee, #ffddda); border-color: rgba(200,60,50,0.3); }
+.cc-papriky   { background: linear-gradient(145deg, #f0faf0, #d8f0d8); border-color: rgba(60,160,60,0.3); }
+.cc-pomerance { background: linear-gradient(145deg, #fff4e6, #ffe8c0); border-color: rgba(230,140,30,0.3); }
+.cc-banany    { background: linear-gradient(145deg, #fffce0, #fff0a0); border-color: rgba(200,170,20,0.35); }
+.cc-brambory  { background: linear-gradient(145deg, #f5efe0, #e8d4b0); border-color: rgba(140,95,40,0.3); }
+.cc-boruvky   { background: linear-gradient(145deg, #f5f0ff, #e8d8ff); border-color: rgba(100,60,180,0.25); }
+.cc-zampiony  { background: linear-gradient(145deg, #f0f8f0, #d8ecd8); border-color: rgba(60,120,60,0.3); }
+
+.crop-emoji { font-size: 2.8rem; line-height: 1; display: block; margin-bottom: 12px; }
+.crop-name { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.crop-diff { font-size: 0.78rem; color: var(--ink-light); margin-bottom: 10px; }
+.crop-desc { font-size: 0.84rem; color: var(--ink-mid); line-height: 1.6; margin-bottom: 14px; }
+.crop-stats { display: flex; flex-direction: column; gap: 5px; }
+.cstat { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; }
+.cstat-label { color: var(--ink-faint); }
+.cstat-val { font-weight: 600; color: var(--ink-mid); }
+.crop-vote-note {
+  margin-top: 16px; background: rgba(255,255,255,0.6); border-radius: 10px;
+  padding: 8px 12px; font-size: 0.79rem; color: var(--ink-mid); border: 1px solid rgba(0,0,0,0.07);
+}
+
+/* ── MINIGAME PANELS ── */
+.mg { border-radius: 20px; padding: 28px 30px; margin-bottom: 16px; border: 1.5px solid transparent; }
+.mg-harvest  { background: linear-gradient(145deg, #fffaea, #fef3c0); border-color: rgba(212,144,10,0.35); }
+.mg-crow     { background: linear-gradient(145deg, #fff1ef, #fde0da); border-color: rgba(199,59,46,0.3); }
+.mg-seedling { background: linear-gradient(145deg, #f0fbee, #d8f5d0); border-color: rgba(74,153,64,0.3); }
+.mg-rare     { background: linear-gradient(145deg, #f5f0ff, #e8d8ff); border-color: rgba(139,75,191,0.3); }
+.mg-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+.mg-emoji { font-size: 2.2rem; line-height: 1; }
+.mg-title { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); }
+.mg-sub { font-size: 0.8rem; color: var(--ink-light); margin-top: 1px; }
+.mg-badge { margin-left: auto; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.mb-gold   { background: var(--gold-bright); color: var(--soil); }
+.mb-red    { background: var(--red-mid); color: #fff; }
+.mb-green  { background: var(--green-mid); color: #fff; }
+.mb-purple { background: var(--purple-mid); color: #fff; }
+.mg p { font-size: 0.9rem; line-height: 1.78; color: var(--ink-mid); margin-bottom: 10px; }
+.mg p:last-child { margin-bottom: 0; }
+.mg-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.mg-stat { background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 8px 14px; font-size: 0.82rem; }
+.mg-stat strong { color: var(--ink); display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1px; }
+.mg-stat span { color: var(--ink-mid); font-weight: 500; }
+
+/* ── UPGRADES ── */
+.upg-block { border: 1.5px solid var(--line); border-radius: 20px; overflow: hidden; margin-top: 8px; }
+.upg { display: grid; grid-template-columns: 56px 1fr auto; gap: 0 16px; align-items: center; padding: 22px 24px; border-bottom: 1px solid var(--line); transition: background 0.15s; }
+.upg:last-child { border-bottom: none; }
+.upg:hover { background: rgba(212,144,10,0.04); }
+.upg-ico { font-size: 2rem; text-align: center; }
+.upg-body h4 { font-family: 'Fraunces', serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 4px; }
+.upg-body p { font-size: 0.86rem; color: var(--ink-mid); line-height: 1.55; }
+.upg-pill { background: var(--paper-dark); border: 1px solid var(--line); border-radius: 8px; padding: 5px 12px; font-size: 0.8rem; font-weight: 600; color: var(--ink-mid); white-space: nowrap; text-align: center; }
+
+/* ── COIN CARDS ── */
+.coin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+.coin-card { background: var(--paper-dark); border: 1.5px solid var(--line); border-radius: 16px; padding: 20px; transition: transform 0.2s, box-shadow 0.2s; }
+.coin-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.coin-card .ci { font-size: 2rem; display: block; margin-bottom: 10px; }
+.coin-card h3 { font-family: 'Fraunces', serif; font-size: 1rem; color: var(--ink); margin-bottom: 7px; }
+.coin-card p { font-size: 0.86rem; color: var(--ink-mid); line-height: 1.6; }
+.coin-card .cn { margin-top: 8px; font-size: 0.79rem; color: var(--ink-faint); font-style: italic; }
+
+/* ── BEGINNER BOX ── */
+.beginner { background: var(--green-mist); border: 2px solid rgba(74,153,64,0.3); border-radius: 22px; padding: 30px 32px; }
+.beg-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.beg-head .bi { font-size: 2.4rem; }
+.beg-head h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--green); }
+.beginner > p { font-size: 0.91rem; color: var(--ink-mid); line-height: 1.7; margin-bottom: 18px; }
+.beg-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.bp { background: rgba(255,255,255,0.7); border-radius: 12px; padding: 12px 14px; font-size: 0.86rem; display: flex; gap: 10px; align-items: flex-start; }
+.bp .bpe { font-size: 1.2rem; flex-shrink: 0; }
+.bp strong { color: var(--ink); display: block; margin-bottom: 1px; }
+.bp small { color: var(--ink-light); font-size: 0.8rem; }
+
+/* ── COMMANDS ── */
+.cmds { display: flex; flex-direction: column; gap: 10px; }
+.cmd { display: flex; align-items: flex-start; gap: 16px; background: var(--paper-dark); border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px; transition: border-color 0.15s; }
+.cmd:hover { border-color: rgba(212,144,10,0.4); }
+.cmd-ico { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+.cmd-body { flex: 1; }
+.cmd-slug { display: inline-block; background: var(--soil); color: var(--gold-pale); font-family: 'Courier New', monospace; font-size: 0.83rem; padding: 2px 10px; border-radius: 6px; margin-bottom: 5px; }
+.cmd-body h4 { font-family: 'Fraunces', serif; font-size: 0.98rem; color: var(--ink); margin-bottom: 4px; }
+.cmd-body p { font-size: 0.86rem; color: var(--ink-mid); line-height: 1.55; }
+
+/* ── FAQ ── */
+.faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 9px; display: flex; align-items: flex-start; gap: 10px; }
+.faq-q::before { content: '?'; background: var(--gold-bright); color: var(--soil); min-width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900; flex-shrink: 0; margin-top: 3px; }
+.faq-a { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.75; padding-left: 32px; }
+
+/* ── TIPS GRID ── */
+.tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.tip-card { background: var(--paper-dark); border: 1px solid var(--line); border-radius: 16px; padding: 20px; transition: transform 0.2s; }
+.tip-card:hover { transform: translateY(-3px); }
+.tip-card .ti { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+.tip-card h3 { font-family: 'Fraunces', serif; font-size: 0.98rem; color: var(--ink); margin-bottom: 7px; }
+.tip-card p { font-size: 0.86rem; color: var(--ink-mid); line-height: 1.65; }
+
+/* ── NIGHT MODE BOX ── */
+.night-box {
+  background: linear-gradient(145deg, #e8f0ff, #d0e0f8);
+  border: 2px solid rgba(40,80,160,0.25);
+  border-radius: 22px;
+  padding: 28px 30px;
+}
+.night-box .night-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.night-box .night-head .ni { font-size: 2.4rem; }
+.night-box .night-head h3 { font-family: 'Fraunces', serif; font-size: 1.25rem; font-weight: 700; color: #1a3a7a; }
+.night-box > p { font-size: 0.91rem; color: var(--ink-mid); line-height: 1.7; margin-bottom: 16px; }
+.night-perks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.np { background: rgba(255,255,255,0.7); border-radius: 12px; padding: 12px 14px; font-size: 0.86rem; display: flex; gap: 10px; align-items: flex-start; }
+.np .npe { font-size: 1.2rem; flex-shrink: 0; }
+.np strong { color: var(--ink); display: block; margin-bottom: 1px; }
+.np small { color: var(--ink-light); font-size: 0.8rem; }
+
+/* ── FOOTER ── */
+footer { background: var(--soil); color: rgba(253,228,144,0.5); text-align: center; padding: 48px 24px; font-size: 0.88rem; line-height: 1.9; }
+footer .fe { font-size: 2rem; letter-spacing: 8px; display: block; margin-bottom: 14px; }
+footer strong { color: var(--gold-pale); }
+
+.divider { height: 1px; background: var(--line); margin: 8px 0; }
+code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; font-family: 'Courier New', monospace; font-size: 0.88em; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 580px) {
+  .beg-perks, .night-perks { grid-template-columns: 1fr; }
+  .upg { grid-template-columns: 44px 1fr; }
+  .upg-pill { grid-column: 2; }
+  .crop-grid { grid-template-columns: 1fr 1fr; }
+  .mg-head { gap: 10px; }
+  .mg-badge { margin-left: 0; }
+}
+@media (max-width: 380px) {
+  .crop-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🌽 Discord minihra · Komunitní farma</div>
+  <h1>Farma<br><em>pro celý server</em></h1>
+  <p class="hero-desc">Kompletní průvodce pro nové i zkušené farmáře — od zalití po sklizeň</p>
+  <div class="hero-tags">
+    <span class="htag">🤝 Komunitní spolupráce</span>
+    <span class="htag">🌽🍊🍅🫐🍓🥔🍌🫑🍄 9 plodin</span>
+    <span class="htag">🎮 5 miniher</span>
+    <span class="htag">💰 Sbírání mincí</span>
+    <span class="htag">⬆️ Vylepšení</span>
+    <span class="htag">🗳️ Hlasování o plodinách</span>
+    <span class="htag">🌙 Noční režim</span>
+  </div>
+  <div class="hero-stripe"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#co-to-je">Co to je?</a>
+    <a href="#cyklus">Cyklus hry</a>
+    <a href="#plodiny">Plodiny</a>
+    <a href="#minihry">Minihry</a>
+    <a href="#vylepseni">Vylepšení</a>
+    <a href="#mince">Mince</a>
+    <a href="#nocni">Noční režim</a>
+    <a href="#zacatecnik">Začátečník</a>
+    <a href="#prikazy">Příkazy</a>
+    <a href="#tipy">Tipy</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<div class="page">
+
+<!-- CO TO JE -->
+<div id="co-to-je" class="sec">
+  <div class="sec-icon ic-gold">🌽</div>
+  <div class="sec-text">
+    <h2>Co je Farma?</h2>
+    <p>Základní přehled pro naprosté nováčky</p>
+  </div>
+</div>
+
+<div class="intro">
+  Farma je <strong>komunitní minihra přímo na vašem Discord serveru</strong>. Každý server má jednu společnou farmu, o kterou pečují všichni členové dohromady — nikdo nehraje sám za sebe.<br><br>
+  Vaším cílem je <strong>pěstovat plodiny od klíčku po plnou zralost</strong>, bránit pole před škůdci, sklízet úrodu, sbírat sazenice a vydělané mince investovat zpět do vylepšení farmy. Čím více lidí se zapojí, tím lépe se farmě daří.<br><br>
+  Po každé sklizni si komunita <strong>hlasováním zvolí příští plodinu</strong> — každá má jiný rytmus, obtížnost a odměny. Admini mohou navíc zapnout <strong>noční režim</strong>, který mění chování farmy v nočních hodinách.
+</div>
+
+<!-- CYKLUS HRY -->
+<div id="cyklus" class="sec">
+  <div class="sec-icon ic-green">🔄</div>
+  <div class="sec-text">
+    <h2>Cyklus hry</h2>
+    <p>Od prázdného pole po zlatou sklizeň — krok za krokem</p>
+  </div>
+</div>
+
+<div class="flow">
+  <div class="step">
+    <div class="step-dot dot-gold">1</div>
+    <h3>🗳️ Hlasování o plodině</h3>
+    <p>Na začátku každého nového cyklu (nebo na zcela nové farmě) proběhne <strong>60sekundové hlasování</strong>, kde celý server zvolí, co se bude pěstovat. Každá plodina má jiný cooldown, rychlost růstu a výši odměn. Bez hlasů se automaticky zasadí kukuřice.</p>
+    <div class="chips">
+      <span class="chip">⏱️ 60 sekund na hlasování</span>
+      <span class="chip g">Při remíze → kukuřice</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-dot dot-green">2</div>
+    <h3>💧 Zalévat a sledovat růst</h3>
+    <p>Kdokoli stiskne tlačítko <strong>„Zasadit / Zalit"</strong> a plodina začne růst. Každé zalití přidá procenta růstu — od 5 % u žampionů po 1,6 % u borůvek. <strong>Musíte se střídat</strong> — ten samý člověk nemůže zalit dvakrát po sobě. Mezi zalitími platí cooldown dle plodiny a kompostéru.</p>
+    <p>Plodina má zároveň ukazatel <strong>vody</strong>. Pokud není zalita včas, uschne a musíte začít znovu.</p>
+    <div class="chips">
+      <span class="chip">💰 10 mincí za zalití</span>
+      <span class="chip">⏳ Cooldown 1–25 min dle plodiny</span>
+      <span class="chip r">20 % šance na selhání zalití</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-dot dot-sky">3</div>
+    <h3>🐦‍⬛ Bránit pole před škůdci</h3>
+    <p>Kdykoliv se mohou na poli objevit <strong>škůdci</strong>. Pokud je nikdo nezažene do <strong>3 minut</strong>, pole zaplatí pokutu. Při výskytu škůdců se zobrazí červené tlačítko 🦅 — kliknutí spustí minihru zahánění. V <strong>nočním režimu</strong> se škůdci objevují o 35 % méně.</p>
+    <div class="chips">
+      <span class="chip r">⚠️ Pokuta: −10 % růstu + −10 % sazenic</span>
+      <span class="chip">⏳ Okno 3 minuty</span>
+      <span class="chip n">🌙 V noci −35 % výskyt</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-dot dot-gold">4</div>
+    <h3>🌱 Sbírat sazenice (bonus)</h3>
+    <p>Při zalití je <strong>až 40% šance</strong>, že se spustí minihra sběru sazenic. Sazenice se ukládají do společné zásoby farmy (max. 100 ks) a při sklizni <strong>zvyšují bonus pro serverovou pokladnu</strong>. Přebytky nad 100 se přepočítají na osobní mince.</p>
+    <div class="chips">
+      <span class="chip g">🌱 Max. 100 sazenic v zásobě</span>
+      <span class="chip">+5 mincí / sazenice při sklizni</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-dot dot-red">5</div>
+    <h3>✨ Vzácné události</h3>
+    <p>Při každém zalití s růstem ≥ 50 % existuje <strong>15% šance</strong>, že se objeví vzácný živočich — <strong>beruška 🐞</strong> (100 💰), <strong>kobylka 🦗</strong> (120 💰) nebo <strong>motýl 🦋</strong> (80 💰). Kdo klikne na správné tlačítko nejrychleji, získá odměnu. Trvá jen <strong>4 sekundy</strong> (v Začátečnickém módu 7 sekund)!</p>
+    <div class="chips">
+      <span class="chip b">🐞 100 / 🦗 120 / 🦋 80 mincí</span>
+      <span class="chip">⏱️ 4 s / 7 s v začátečníkovi</span>
+      <span class="chip">15 % šance při růstu ≥ 50 %</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-dot dot-soil">6</div>
+    <h3>🚜 Sklidit při 95 %+ růstu</h3>
+    <p>Jakmile plodina dosáhne <strong>95 % růstu</strong>, objeví se tlačítko sklizně. Minihra sklizně trvá <strong>10 sekund</strong> — celý server kliká a sbírá. V poli <strong>Historie</strong> embedu se po sklizni zobrazí kdo a kolik kliknul: „Poslední sklizeň: Hráč1 (5 ks), Hráč2 (3 ks)".</p>
+    <div class="chips">
+      <span class="chip">🌽 Základní odměna 20–320 💰 dle plodiny</span>
+      <span class="chip g">+5 mincí za každou sazenici</span>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-dot dot-purple">7</div>
+    <h3>🗳️ Hlasování a nový cyklus</h3>
+    <p>Po sklizni se okamžitě spustí nové <strong>60sekundové hlasování</strong> o příští plodině. Výsledek se zobrazí v embedu, pole se pak připraví k zasazení. A cyklus začíná znovu!</p>
+  </div>
+</div>
+
+<!-- PLODINY -->
+<div id="plodiny" class="sec">
+  <div class="sec-icon ic-gold">🌾</div>
+  <div class="sec-text">
+    <h2>Devět plodin</h2>
+    <p>Každá s jiným tempem, obtížností a odměnami — komunita hlasuje po každé sklizni</p>
+  </div>
+</div>
+
+<div class="callout green">
+  <span class="callout-icon">🗳️</span>
+  <div>Po každé sklizni (i na nové farmě) proběhne <strong>60sekundové hlasování</strong> — každý člen může hlasovat pro jednu plodinu. Výsledky se zobrazují živě. Vyhrává plodina s nejvíce hlasy, při remíze nebo bez hlasů se zasadí 🌽 kukuřice.</div>
+</div>
+
+<!-- ⚡ Rychlá -->
+<div style="margin-top: 24px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⚡ Rychlá</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="crop-grid">
+  <div class="crop-card cc-zampiony">
+    <span class="crop-emoji">🍄</span>
+    <div class="crop-name">Žampiony</div>
+    <div class="crop-diff">⚡ Rychlá · Nejrychlejší ze všech</div>
+    <div class="crop-desc">Rostou bleskově, ale odměna je skromnější. Ideální pro aktivní servery online celý den — nejkratší cyklus ze všech.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+5,0 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">1–6 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">10–40 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">20–60 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">5 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~19 min</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~1 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~2 h</span></div>
+    </div>
+    <div class="crop-vote-note">🍄🌿🌱🍂 Sklizňová tlačítka</div>
+  </div>
+</div>
+
+<!-- ⭐ Snadná -->
+<div style="margin-top: 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⭐ Snadná</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="crop-grid">
+  <div class="crop-card cc-jahody">
+    <span class="crop-emoji">🍓</span>
+    <div class="crop-name">Jahody</div>
+    <div class="crop-diff">⭐ Snadná · Rychlý cyklus</div>
+    <div class="crop-desc">Rychle rostou, rychle usychají. Ideální pro hyperaktivní servery online celý den.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+4,0 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">2–12 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">15–60 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">30–90 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">7 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~48 min</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~3 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~5 h</span></div>
+    </div>
+    <div class="crop-vote-note">🍓🌸🌱 Sklizňová tlačítka</div>
+  </div>
+
+  <div class="crop-card cc-kukurice">
+    <span class="crop-emoji">🌽</span>
+    <div class="crop-name">Kukuřice</div>
+    <div class="crop-diff">⭐ Snadná · Výchozí plodina</div>
+    <div class="crop-desc">Klasika. Spolehlivý růst, bezpečný cooldown, dobrá odměna. Vhodná pro každý server.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+2,5 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">3–20 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">30–120 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">50–150 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">10 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~2 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~8 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~13 h</span></div>
+    </div>
+    <div class="crop-vote-note">🌽🌾 Sklizňová tlačítka</div>
+  </div>
+
+  <div class="crop-card cc-brambory">
+    <span class="crop-emoji">🥔</span>
+    <div class="crop-name">Brambory</div>
+    <div class="crop-diff">⭐ Snadná · Odolná volba</div>
+    <div class="crop-desc">Nenáročné a odolné. Slušná odměna bez zbytečného stresu — skvělé pro méně aktivní servery.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+3,0 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">2,7–16 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">23–108 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">45–130 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">9 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~1,5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~5,5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~9 h</span></div>
+    </div>
+    <div class="crop-vote-note">🥔🌱🌿🍂 Sklizňová tlačítka</div>
+  </div>
+</div>
+
+<!-- ⭐⭐ Střední -->
+<div style="margin-top: 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⭐⭐ Střední</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="crop-grid">
+  <div class="crop-card cc-rajcata">
+    <span class="crop-emoji">🍅</span>
+    <div class="crop-name">Rajčata</div>
+    <div class="crop-diff">⭐⭐ Střední · Rychlý cyklus</div>
+    <div class="crop-desc">Rostou rychle, ale usychají dřív. Vhodné pro aktivní servery, které jsou online celý den.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+3,2 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">2,5–15 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">20–90 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">40–120 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">8 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~1,2 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~7,5 h</span></div>
+    </div>
+    <div class="crop-vote-note">🍅🌿🌱 Sklizňová tlačítka</div>
+  </div>
+
+  <div class="crop-card cc-papriky">
+    <span class="crop-emoji">🫑</span>
+    <div class="crop-name">Papriky</div>
+    <div class="crop-diff">⭐⭐ Střední · Vyvážená volba</div>
+    <div class="crop-desc">Vyvážená plodina. Ani rychlé, ani pomalé — slušná odměna za pravidelnou péči.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+2,8 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">3,3–18 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">25–100 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">60–170 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">11 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~2 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~6,5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~10 h</span></div>
+    </div>
+    <div class="crop-vote-note">🫑🌶️🌿 Sklizňová tlačítka</div>
+  </div>
+
+  <div class="crop-card cc-pomerance">
+    <span class="crop-emoji">🍊</span>
+    <div class="crop-name">Pomeranče</div>
+    <div class="crop-diff">⭐⭐ Střední · Vyšší odměna</div>
+    <div class="crop-desc">Pomalejší růst, ale vyšší výkup. Trpělivost se vyplatí — vhodné pro organizované servery.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+2,0 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">4–23 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">40–140 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">80–220 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">14 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~3 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~11 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~19 h</span></div>
+    </div>
+    <div class="crop-vote-note">🍊🍋🌿 Sklizňová tlačítka</div>
+  </div>
+</div>
+
+<!-- ⭐⭐⭐ Těžká -->
+<div style="margin-top: 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⭐⭐⭐ Těžká</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="crop-grid">
+  <div class="crop-card cc-banany">
+    <span class="crop-emoji">🍌</span>
+    <div class="crop-name">Banány</div>
+    <div class="crop-diff">⭐⭐⭐ Těžká · Tropická výzva</div>
+    <div class="crop-desc">Tropická výzva. Pomalu, ale s výraznou odměnou pro trpělivé a koordinované servery.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+1,8 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">4,5–25 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">50–160 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">100–270 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">16 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~4 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~14 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~22 h</span></div>
+    </div>
+    <div class="crop-vote-note">🍌🌿🌾 Sklizňová tlačítka</div>
+  </div>
+
+  <div class="crop-card cc-boruvky">
+    <span class="crop-emoji">🫐</span>
+    <div class="crop-name">Borůvky</div>
+    <div class="crop-diff">⭐⭐⭐ Těžká · Obří odměna</div>
+    <div class="crop-desc">Pomalé jako borůvkový keř. Obří odměna pro vytrvalé farmáře. Nejvyšší výkup ze všech.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+1,6 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">5–23 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">60–150 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">120–320 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">18 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~15 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~23 h</span></div>
+    </div>
+    <div class="crop-vote-note">🫐🍇🌿 Sklizňová tlačítka</div>
+  </div>
+</div>
+
+<div class="callout gold" style="margin-top: 16px;">
+  <span class="callout-icon">💡</span>
+  <div>Všechny hodnoty výše jsou <strong>základní bez kompostéru</strong>. S vylepšeným kompostérem je cooldown kratší a růst při každém zalití vyšší. V <strong>nočním režimu (23:00–04:00)</strong> je čas uschlnutí o 35 % delší — ideální pro pomalejší plodiny přes noc.</div>
+</div>
+
+<!-- MINIHRY -->
+<div id="minihry" class="sec">
+  <div class="sec-icon ic-sky">🎮</div>
+  <div class="sec-text">
+    <h2>Pět miniher</h2>
+    <p>Rychlé akce, kde se vyplatí být rychlý a mít partu připravenou</p>
+  </div>
+</div>
+
+<div class="mg mg-harvest">
+  <div class="mg-head">
+    <span class="mg-emoji">🚜</span>
+    <div>
+      <div class="mg-title">Sklizeň</div>
+      <div class="mg-sub">Spustí se kliknutím na 🚜 při růstu 95 %+</div>
+    </div>
+    <span class="mg-badge mb-gold">Hlavní minihra</span>
+  </div>
+  <p>Hlavní událost farmy. Jakmile plodina dozraje, celý server má <strong>10 sekund</strong> na klikání na sklizňová tlačítka. Za každý klik dostaneš mince přímo na účet.</p>
+  <p>Po skončení dostane serverová pokladna základní odměnu plus <strong>bonus za sazenice</strong>. V poli Historie embedu se zobrazí detail: kdo sklízel a kolik kliknul — např. „Hráč1 (5 ks), Hráč2 (3 ks)".</p>
+  <div class="mg-grid">
+    <div class="mg-stat"><strong>⏱️ Čas</strong><span>10 sekund</span></div>
+    <div class="mg-stat"><strong>💰 Za klik</strong><span>5–18 💰 dle plodiny</span></div>
+    <div class="mg-stat"><strong>🏦 Bonus farmy</strong><span>20–320 💰</span></div>
+    <div class="mg-stat"><strong>🌱 + za sazenice</strong><span>+5 💰 / ks</span></div>
+  </div>
+</div>
+
+<div class="mg mg-crow">
+  <div class="mg-head">
+    <span class="mg-emoji">🐦‍⬛</span>
+    <div>
+      <div class="mg-title">Zahánění škůdců</div>
+      <div class="mg-sub">Spustí se kliknutím na 🦅 při výskytu škůdců</div>
+    </div>
+    <span class="mg-badge mb-red">Záchrana pole</span>
+  </div>
+  <p>Škůdci se objevují <strong>náhodně</strong> — nejčastěji po zalití nebo na velkém poli. Čím více kliků, tím více mincí každý dostane. V <strong>nočním režimu</strong> je výskyt škůdců o 35 % nižší.</p>
+  <div class="mg-grid">
+    <div class="mg-stat"><strong>⏱️ Čas</strong><span>10 sekund</span></div>
+    <div class="mg-stat"><strong>💰 Za klik</strong><span>5 mincí</span></div>
+    <div class="mg-stat"><strong>⚠️ Pokuta</strong><span>−10 % růstu + −10 % sazenic</span></div>
+    <div class="mg-stat"><strong>⏳ Okno reakce</strong><span>3 minuty</span></div>
+    <div class="mg-stat"><strong>🌙 V noci</strong><span>−35 % výskyt</span></div>
+  </div>
+</div>
+
+<div class="mg mg-seedling">
+  <div class="mg-head">
+    <span class="mg-emoji">🌱</span>
+    <div>
+      <div class="mg-title">Sběr sazenic</div>
+      <div class="mg-sub">Náhodně po zalití, pokud je růst &gt; 10 %</div>
+    </div>
+    <span class="mg-badge mb-green">Bonus minihra</span>
+  </div>
+  <p>Při zalití je <strong>až 40% šance</strong>, že začnou padat sazenice. Máte <strong>10 sekund</strong> na klikání. Sazenice zvyšují bonus při každé příští sklizni.</p>
+  <div class="mg-grid">
+    <div class="mg-stat"><strong>⏱️ Čas</strong><span>10 sekund</span></div>
+    <div class="mg-stat"><strong>🌱 Za klik</strong><span>1 sazenice</span></div>
+    <div class="mg-stat"><strong>📦 Limit</strong><span>100 sazenic</span></div>
+    <div class="mg-stat"><strong>🎲 Šance</strong><span>až 40 %</span></div>
+    <div class="mg-stat"><strong>💰 Přebytek</strong><span>+2 💰 / přebytková sazenice</span></div>
+  </div>
+</div>
+
+<div class="mg mg-rare">
+  <div class="mg-head">
+    <span class="mg-emoji">✨</span>
+    <div>
+      <div class="mg-title">Vzácný nález</div>
+      <div class="mg-sub">Náhodně při zalití, pokud je růst ≥ 50 %</div>
+    </div>
+    <span class="mg-badge mb-purple">Vzácná minihra</span>
+  </div>
+  <p>Při zalití s růstem ≥ 50 % je <strong>15% šance</strong>, že se na poli objeví vzácný živočich. Trvá jen <strong>4 sekundy</strong> (v Začátečnickém módu 7 sekund) — jedno tlačítko je správné, ostatní návnady.</p>
+  <div class="mg-grid">
+    <div class="mg-stat"><strong>🐞 Beruška</strong><span>100 mincí</span></div>
+    <div class="mg-stat"><strong>🦗 Kobylka</strong><span>120 mincí</span></div>
+    <div class="mg-stat"><strong>🦋 Motýl</strong><span>80 mincí</span></div>
+    <div class="mg-stat"><strong>⏱️ Čas (normální)</strong><span>4 sekundy</span></div>
+    <div class="mg-stat"><strong>⏱️ Čas (začátečník)</strong><span>7 sekund</span></div>
+    <div class="mg-stat"><strong>🎲 Šance</strong><span>15 % při růstu ≥ 50 %</span></div>
+  </div>
+</div>
+
+<div class="mg" style="background: linear-gradient(145deg, #fffae4, #fef2b8); border: 1.5px solid rgba(212,144,10,0.3);">
+  <div class="mg-head">
+    <span class="mg-emoji">🗳️</span>
+    <div>
+      <div class="mg-title">Hlasování o plodině</div>
+      <div class="mg-sub">Po každé sklizni a na nové farmě</div>
+    </div>
+    <span class="mg-badge mb-gold">Komunitní rozhodnutí</span>
+  </div>
+  <p>Po sklizni se zobrazí <strong>hlasovací embed</strong> s tlačítky pro každou plodinu. Každý člen může hlasovat a hlas i změnit. Live počítadla ukazují průběh.</p>
+  <div class="mg-grid">
+    <div class="mg-stat"><strong>⏱️ Trvání</strong><span>60 sekund</span></div>
+    <div class="mg-stat"><strong>🌽 Bez hlasů</strong><span>výchozí kukuřice</span></div>
+    <div class="mg-stat"><strong>📊 Výsledky</strong><span>živě v embedu</span></div>
+  </div>
+</div>
+
+<div class="callout gold" style="margin-top: 8px;">
+  <span class="callout-icon">💡</span>
+  <div><strong>Tip:</strong> Všechny klikací minihry (sklizeň, škůdci, sazenice) jsou veřejné — čím více členů kliká, tím více mincí se celkově vydělá. Upozorněte ostatní, když probíhá sklizeň nebo se objevili škůdci!</div>
+</div>
+
+<!-- VYLEPŠENÍ -->
+<div id="vylepseni" class="sec">
+  <div class="sec-icon ic-soil">⬆️</div>
+  <div class="sec-text">
+    <h2>Komunitní vylepšení</h2>
+    <p>Investujte osobní mince — celý server z toho těží</p>
+  </div>
+</div>
+
+<div class="intro">
+  Kdokoli ze serveru může přispět svými osobně nasbíranými mincemi do dvou komunitních vylepšení. Obě jsou <strong>sdílená pro celý server</strong> — každý příspěvek pomáhá všem, bez výjimky.
+</div>
+
+<div class="upg-block" style="margin-top: 20px;">
+  <div class="upg">
+    <div class="upg-ico">♻️</div>
+    <div class="upg-body">
+      <h4>Kompostér</h4>
+      <p>Zkracuje cooldown mezi zalitími a zvyšuje procento růstu při každém zalití. Navíc přidává šanci na <strong>hnojový bonus</strong> (+5 % navíc při šťastném zalití — šance roste s úrovní, až ~25 % na max. levelu).</p>
+    </div>
+    <div class="upg-pill">Max.<br>Lv. 40</div>
+  </div>
+  <div class="upg">
+    <div class="upg-ico">🦅</div>
+    <div class="upg-body">
+      <h4>Ochrana před škůdci</h4>
+      <p>Snižuje pravděpodobnost výskytu škůdců. Každá úroveň snižuje šanci o 2 %. Na maximální úrovni je šance na škůdce o <strong>40 % nižší</strong> — a v kombinaci s nočním režimem až o 62 % celkem.</p>
+    </div>
+    <div class="upg-pill">Max.<br>Lv. 20</div>
+  </div>
+</div>
+
+<div class="callout green" style="margin-top: 14px;">
+  <span class="callout-icon">🌿</span>
+  <div><strong>Jak přispívat?</strong> Použij <code>/farm_komposter</code> nebo <code>/farm_ochrana</code> a klikni na tlačítko „Přispět mincemi". Zadáš částku ze svého osobního konta — mince jdou přímo na vylepšení.</div>
+</div>
+
+<!-- MINCE -->
+<div id="mince" class="sec">
+  <div class="sec-icon ic-gold">💰</div>
+  <div class="sec-text">
+    <h2>Systém mincí</h2>
+    <p>Jak se vydělávají, kde se zobrazují a na co se používají</p>
+  </div>
+</div>
+
+<div class="coin-grid">
+  <div class="coin-card">
+    <span class="ci">💧</span>
+    <h3>Zalití / zasazení</h3>
+    <p>Za každé úspěšné zalití nebo zasazení <strong>10 mincí</strong> přímo na tvůj osobní účet.</p>
+    <p class="cn">Musíš se střídat — nelze zalit dvakrát po sobě. Footer embedu vždy ukáže jméno toho, kdo zalil.</p>
+  </div>
+  <div class="coin-card">
+    <span class="ci">🚜</span>
+    <h3>Sklizeň</h3>
+    <p>Za každý klik při sklizni <strong>5–18 mincí</strong> dle plodiny. Více kliků = více výdělku.</p>
+    <p class="cn">Historie embedu zobrazí souhrn: kdo kolik kliknul.</p>
+  </div>
+  <div class="coin-card">
+    <span class="ci">🐦‍⬛</span>
+    <h3>Zahánění škůdců</h3>
+    <p>Za každý klik při zahánění škůdců <strong>5 mincí</strong>. Čím více lidí se zapojí, tím více se vydělá celkově.</p>
+    <p class="cn">Pokud nikdo škůdce nezahnal, nikdo nic nedostane — jen pokuta za pole.</p>
+  </div>
+  <div class="coin-card">
+    <span class="ci">✨</span>
+    <h3>Vzácný nález</h3>
+    <p>Kdo klikne správně, dostane celou odměnu: <strong>80–120 mincí</strong> dle živočicha.</p>
+    <p class="cn">Jen 4 sekundy (7 s v začátečníkovi) a jen jeden správný klik!</p>
+  </div>
+  <div class="coin-card">
+    <span class="ci">🌱</span>
+    <h3>Přebytky sazenic</h3>
+    <p>Sazenice nad limit 100 ks se přepočítají na <strong>2 mince za kus</strong> a rozdělí se úměrně.</p>
+    <p class="cn">Každá uložená sazenice pak přidá +5 mincí do pokladny při sklizni.</p>
+  </div>
+  <div class="coin-card">
+    <span class="ci">🏦</span>
+    <h3>Serverová pokladna</h3>
+    <p>Farma má vlastní pokladnu — slouží jako <strong>skóre serveru</strong> v globálním žebříčku.</p>
+    <p class="cn">Nelze z ní vybírat — je to ukazatel výkonu celé komunity.</p>
+  </div>
+</div>
+
+<div class="callout gold" style="margin-top: 16px;">
+  <span class="callout-icon">💡</span>
+  <div><strong>Osobní mince</strong> se zobrazují ve statistikách (<code>/farm_stats</code>) a lze je investovat do vylepšení. <strong>Serverová pokladna</strong> je separátní — roste sklizněmi a slouží jako ukazatel celkové síly farmy v žebříčku serverů.</div>
+</div>
+
+<!-- NOČNÍ REŽIM -->
+<div id="nocni" class="sec">
+  <div class="sec-icon ic-night">🌙</div>
+  <div class="sec-text">
+    <h2>Noční režim</h2>
+    <p>Speciální mód pro noční hodiny — farma se chová jinak</p>
+  </div>
+</div>
+
+<div class="night-box">
+  <div class="night-head">
+    <span class="ni">🌙</span>
+    <h3>Každý den 23:00–04:00 Praha</h3>
+  </div>
+  <p>Admin může příkazem <code>/farm_cycle</code> zapnout noční režim. Pokud je aktivní, každou noc od <strong>23:00 do 04:00</strong> (Praha) se změní chování farmy — plodiny jsou odolnější a škůdci méně aktivní. V embedu farmy se zobrazí <strong>modrá barva</strong> a v časovačích hlášení o nočním režimu.</p>
+  <div class="night-perks">
+    <div class="np">
+      <span class="npe">⏱️</span>
+      <div><strong>+35 % čas uschlnutí</strong><small>plodiny vydrží déle bez zalití — v noci se méně odpařují</small></div>
+    </div>
+    <div class="np">
+      <span class="npe">🐦‍⬛</span>
+      <div><strong>−35 % výskyt škůdců</strong><small>v noci jsou škůdci méně aktivní — méně přerušení</small></div>
+    </div>
+    <div class="np">
+      <span class="npe">🔵</span>
+      <div><strong>Modrá barva embedu</strong><small>jasný vizuální signál, že noční mód je aktivní</small></div>
+    </div>
+    <div class="np">
+      <span class="npe">🔑</span>
+      <div><strong>Admin funkce</strong><small>nastavuje se přes /farm_cycle — bez dalšího zásahu funguje automaticky</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="callout night" style="margin-top: 14px;">
+  <span class="callout-icon">💡</span>
+  <div><strong>Praktický tip:</strong> Noční režim se hodí pro servery, které jsou aktivní přes den ale v noci nikdo nezalévá — plodiny přežijí noc bez rizika uschlnutí. Kombinace s Ochranou před škůdci (max. Lv. 20) sníží noční výskyt škůdců celkem až o <strong>62 %</strong>.</div>
+</div>
+
+<!-- ZAČÁTEČNÍK -->
+<div id="zacatecnik" class="sec">
+  <div class="sec-icon ic-green">🌟</div>
+  <div class="sec-text">
+    <h2>Začátečnický mód</h2>
+    <p>Pro první kroky — první 5 sklizní je jednodušších</p>
+  </div>
+</div>
+
+<div class="beginner">
+  <div class="beg-head">
+    <span class="bi">🌟</span>
+    <h3>Prvních 5 sklizní v klidnějším módu</h3>
+  </div>
+  <p>Každá nová farma na serveru začíná v <strong>Začátečnickém módu</strong>, který trvá po dobu prvních 5 sklizní. Cílem je, aby nové komunity mohly hru pochopit bez zbytečné frustrace. Po 5. sklizni mód automaticky skončí — žádná akce není potřeba.</p>
+  <div class="beg-perks">
+    <div class="bp">
+      <span class="bpe">⏱️</span>
+      <div><strong>12 sekund na minihry</strong><small>místo standardních 10 sekund</small></div>
+    </div>
+    <div class="bp">
+      <span class="bpe">🎯</span>
+      <div><strong>3 tlačítka v minihrách</strong><small>místo 5 — snazší klikání</small></div>
+    </div>
+    <div class="bp">
+      <span class="bpe">💧</span>
+      <div><strong>Zalití vždy funguje</strong><small>žádné náhodné selhání (0 % místo 20 %)</small></div>
+    </div>
+    <div class="bp">
+      <span class="bpe">🐦‍⬛</span>
+      <div><strong>Škůdci 3× méně</strong><small>klidnější začátky, méně přerušení</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- PŘÍKAZY -->
+<div id="prikazy" class="sec">
+  <div class="sec-icon ic-sky">⌨️</div>
+  <div class="sec-text">
+    <h2>Příkazy</h2>
+    <p>Jak se do hry dostat</p>
+  </div>
+</div>
+
+<div class="cmds">
+  <div class="cmd">
+    <span class="cmd-ico">🌽</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm</div>
+      <h4>Přehled farmy</h4>
+      <p>Hlavní embed farmy — obrázek, ukazatele růstu a vody, aktuálně pěstovaná plodina, tlačítka pro zalití, zahánění škůdců a sklizeň. Barva embedu se mění dle stavu — v nočním režimu je modrá.</p>
+    </div>
+  </div>
+  <div class="cmd">
+    <span class="cmd-ico">♻️</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_komposter</div>
+      <h4>Kompostér</h4>
+      <p>Zobrazí stav komunitního kompostéru — aktuální úroveň, bonusy (kratší cooldown, vyšší růst, šance na hnojení) a progress k dalšímu upgradu. Umožňuje přispět mincemi.</p>
+    </div>
+  </div>
+  <div class="cmd">
+    <span class="cmd-ico">🦅</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_ochrana</div>
+      <h4>Ochrana před škůdci</h4>
+      <p>Zobrazí stav ochrany před škůdci — aktuální úroveň, snížení šance výskytu škůdců a progress k dalšímu upgradu. Umožňuje přispět mincemi na vylepšení.</p>
+    </div>
+  </div>
+  <div class="cmd">
+    <span class="cmd-ico">📊</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_stats</div>
+      <h4>Žebříčky</h4>
+      <p>Interaktivní žebříčky — Top Farmy (serverová pokladna), Top Sklizně, Top Nasbírané mince a nově <strong>🌾 Plodiny</strong> — přehled kolikrát byl každý druh plodiny sklizen. Přepínej mezi lokálním a globálním pohledem.</p>
+    </div>
+  </div>
+  <div class="cmd">
+    <span class="cmd-ico">✏️</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_jmeno [jméno]</div>
+      <h4>Přejmenování farmy</h4>
+      <p>Moderátoři mohou pojmenovat serverovou farmu (max. 50 znaků). Jméno se zobrazuje v nadpisu hlavního embedu a v žebříčku serverů.</p>
+    </div>
+  </div>
+</div>
+
+<div class="callout sky" style="margin-top: 16px;">
+  <span class="callout-icon">🔑</span>
+  <div><strong>Admin příkazy</strong> — vyžadují oprávnění <em>Správa serveru</em>.</div>
+</div>
+
+<div class="cmds" style="margin-top: 10px;">
+  <div class="cmd">
+    <span class="cmd-ico">🌙</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_cycle</div>
+      <h4>Noční režim (toggle)</h4>
+      <p>Zapne nebo vypne noční režim farmy. Pokud je zapnut, každou noc od <strong>23:00 do 04:00</strong> Praha platí: čas uschlnutí +35 %, výskyt škůdců −35 %, embed má modrou barvu. Opětovným použitím příkazu se mód vypne.</p>
+    </div>
+  </div>
+  <div class="cmd">
+    <span class="cmd-ico">🔀</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_admin_force_plodina [plodina]</div>
+      <h4>Násilná změna plodiny</h4>
+      <p>Okamžitě přeruší aktuální pěstování a nastaví novou plodinu od 0 %. Platné ID plodiny: <code>jahody</code>, <code>brambory</code>, <code>kukurice</code>, <code>rajcata</code>, <code>papriky</code>, <code>pomerance</code>, <code>banany</code>, <code>boruvky</code>, <code>zampiony</code>. Embed farmy se automaticky překreslí.</p>
+    </div>
+  </div>
+  <div class="cmd">
+    <span class="cmd-ico">🗑️</span>
+    <div class="cmd-body">
+      <div class="cmd-slug">/farm_admin_clean</div>
+      <h4>Vyčistit staré záznamy</h4>
+      <p>Smaže zastaralé individuální záznamy farmy z databáze. Použijte při migraci ze starší verze bota.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TIPY -->
+<div id="tipy" class="sec">
+  <div class="sec-icon ic-purple">💡</div>
+  <div class="sec-text">
+    <h2>Tipy pro úspěšné farmaření</h2>
+    <p>Co zkušení farmáři vědí — a nováčci zjistí za chvíli</p>
+  </div>
+</div>
+
+<div class="tips-grid">
+  <div class="tip-card">
+    <span class="ti">🗳️</span>
+    <h3>Hlasujte strategicky</h3>
+    <p>Hyperaktivní server? Zkuste žampiony — nejrychlejší cyklus (~ 1 h). Aktivní přes den? Jahody nebo rajčata. Méně aktivní server ocení brambory nebo borůvky, kde voda odchází pomaleji.</p>
+  </div>
+  <div class="tip-card">
+    <span class="ti">🌙</span>
+    <h3>Využijte noční režim</h3>
+    <p>Pokud přes noc nikdo nezalévá, zapněte <code>/farm_cycle</code> — plodiny v noci usychají o 35 % pomaleji. Nejlepší kombinace: pomalejší plodiny (borůvky, pomeranče) + noční režim.</p>
+  </div>
+  <div class="tip-card">
+    <span class="ti">🔔</span>
+    <h3>Hlídejte čas uschlnutí</h3>
+    <p>Embed vždy ukazuje zbývající čas. Pokud zbývá méně než 30 minut, je čas upozornit ostatní v chatu!</p>
+  </div>
+  <div class="tip-card">
+    <span class="ti">♻️</span>
+    <h3>Kompostér jako první investice</h3>
+    <p>Kratší cooldown zalití je nejdůležitější vylepšení — přímý vliv na rychlost celého cyklu. U žampionů je to obzvlášť citelné.</p>
+  </div>
+  <div class="tip-card">
+    <span class="ti">🌱</span>
+    <h3>Sbírejte sazenice před sklizní</h3>
+    <p>Každá sazenice zvyšuje bonus při sklizni. Snažte se o co nejvyšší stav sazenic těsně před dozráním — ideálně plných 100 ks.</p>
+  </div>
+  <div class="tip-card">
+    <span class="ti">📣</span>
+    <h3>Oznamujte sklizně a vzácné nálezy</h3>
+    <p>Čím více lidí kliká, tím více mincí se celkově vydělá. Upozorněte server, když dozraje plodina nebo se objeví beruška!</p>
+  </div>
+  <div class="tip-card">
+    <span class="ti">👀</span>
+    <h3>Škůdci — reagujte okamžitě</h3>
+    <p>Na zahnání škůdců máte 3 minuty. Výskyt se zobrazí v embedu a červené tlačítko 🦅 bude okamžitě k dispozici.</p>
+  </div>
+  <div class="tip-card">
+    <span class="ti">✨</span>
+    <h3>Pozor na vzácné nálezy</h3>
+    <p>Máte jen 4 sekundy (7 s v začátečníkovi) a musíte kliknout na správné tlačítko — ostatní jsou návnady. Kobylka (120 💰) je nejvzácnější odměna!</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div id="faq" class="sec">
+  <div class="sec-icon ic-gold">❓</div>
+  <div class="sec-text">
+    <h2>Časté otázky</h2>
+    <p>Odpovědi na to, co vás nejčastěji zajímá</p>
+  </div>
+</div>
+
+<div>
+
+  <div class="faq-item">
+    <div class="faq-q">Co je to žampiony a proč jsou tak rychlé?</div>
+    <p class="faq-a">Žampiony jsou nová plodina kategorie ⚡ Rychlá — nejrychlejší ze všech 9 plodin. Každé zalití přidá rovných 5 % růstu (oproti 1,6 % u borůvek), cooldown je pouhá 1–6 minut a celý cyklus trvá typicky jen hodinu. Kompromisem je nižší odměna (20–60 💰). Ideální pro servery, kde se lidé střídají velmi aktivně celý den.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Jak funguje noční režim a kdo ho může zapnout?</div>
+    <p class="faq-a">Noční režim zapne nebo vypne admin příkazem <code>/farm_cycle</code>. Pokud je zapnutý, každý den od <strong>23:00 do 04:00</strong> (Praha) automaticky platí dvě výhody: čas uschlnutí je o 35 % delší a výskyt škůdců o 35 % nižší. Mimo noční okno farma funguje standardně. Embed farmy má v nočních hodinách modrou barvu a v poli časovačů se zobrazí hlášení o nočním režimu.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Jak proběhne výběr plodiny na nové farmě?</div>
+    <p class="faq-a">Při prvním zalití na zcela nové farmě se místo okamžitého zasazení spustí 60sekundové hlasování o plodině. Všichni mohou hlasovat — hráč, který kliknul „Zalit", dostane odměnu 10 mincí automaticky po výběru. Pokud nikdo nehlasuje, zasadí se kukuřice.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Co se stane, když plodina uschne?</div>
+    <p class="faq-a">Farma se vrátí na 0 % růstu a 0 % vody. Pole je „mrtvé" — tlačítko zalití se změní na „Zasadit / Zalit" a prvním zalitím (po novém hlasování o plodině) začne nový cyklus. Zásoby sazenic zůstanou zachovány, pokud škůdci nestihli farmu potrestat.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Proč mi zalití „nerostla" — footer říkal selhání?</div>
+    <p class="faq-a">Při každém standardním zalití (mimo Začátečnický mód) existuje <strong>20% šance selhání</strong> — voda se doplní na 100 %, ale plodina o žádné procento nevyroste. Odměna 10 mincí přijde i při selhání. V Začátečnickém módu je šance selhání 0 %. Ve footeru embedu vždy uvidíte jméno toho, kdo zalíval.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Co znamená „Poslední sklizeň: Hráč1 (5 ks), Hráč2 (3 ks)" v Historii?</div>
+    <p class="faq-a">Nový formát pole Historie v embedu farmy. Po každé sklizni se uloží detail — kdo se sklizně zúčastnil a kolik kliknul. Emoji vedle „Poslední sklizeň" odpovídá plodině, která byla tehdy sklizena (ne aktuální plodině). Takto je vždy jasné kdo přispěl k minulé sklizni.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Jak fungují vzácné nálezy — musím kliknout rychle?</div>
+    <p class="faq-a">Ano — vzácný nález trvá jen <strong>4 sekundy</strong> (7 sekund v Začátečnickém módu) a zobrazí se více tlačítek, ale jen jedno je správné. Kdo klikne na správné nejrychleji, bere celou odměnu (80–120 mincí). Pokud nikdo neklikne správně, nález zmizí bez odměny.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Jak dlouho trvají minihry?</div>
+    <p class="faq-a">Sklizeň, zahánění škůdců a sběr sazenic trvají standardně <strong>10 sekund</strong> (v Začátečnickém módu 12 sekund). Vzácný nález je speciální — trvá <strong>4 sekundy</strong> v normálním módu a <strong>7 sekund</strong> v Začátečnickém módu. Hlasování o plodině trvá vždy <strong>60 sekund</strong>.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Mohu ovlivnit, jaká plodina se bude pěstovat?</div>
+    <p class="faq-a">Ano — každý člen serveru hlasuje po každé sklizni a na nové farmě. Hlas lze i změnit v průběhu 60 sekund. Embed ukazuje živé počítadlo hlasů pro každou plodinu. Vyhrává plodina s nejvíce hlasy, při remíze nebo bez hlasů se zasadí kukuřice. Moderátoři navíc mohou příkazem <code>/farm_admin_force_plodina</code> plodinu změnit kdykoli — nově včetně žampionů.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Co se stane s farmou po restartu bota?</div>
+    <p class="faq-a">Bot si pamatuje celý stav farmy v databázi včetně nastavení nočního režimu. Po restartu se přehled automaticky obnoví — embed, tlačítka a veškerá data zůstanou zachovány. Bot navíc čeká 5 sekund po startu před obnovením embedů, aby měl Discord čas plně načíst servery.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Jak se dostat výš v globálním žebříčku?</div>
+    <p class="faq-a">Globální žebříček serverů sleduje výši serverové pokladny. Nejrychleji pokladna roste sklizněmi náročnějších plodin (borůvky dávají až 320 + bonusy za sazenice) a vysokou aktivitou při každé sklizni. Záložka 🌾 Plodiny v <code>/farm_stats</code> ukáže přehled kolikrát byl každý druh sklizen.</p>
+  </div>
+
+</div>
+
+</div><!-- end .page -->
+
+<footer>
+  <span class="fe">🌽 🍊 🍅 🫐 🍓 🥔 🍌 🫑 🍄</span>
+  <p><strong>Farma</strong> — komunitní minihra pro Discord</p>
+  <p>Hodně zdaru při farmení a bohatou sklizeň! 🚜</p>
+</footer>
+
+</body>
+</html>
