@@ -267,6 +267,7 @@ body::before {
 .cc-banany    { background: linear-gradient(145deg, #fffce0, #fff0a0); border-color: rgba(200,170,20,0.35); }
 .cc-brambory  { background: linear-gradient(145deg, #f5efe0, #e8d4b0); border-color: rgba(140,95,40,0.3); }
 .cc-boruvky   { background: linear-gradient(145deg, #f5f0ff, #e8d8ff); border-color: rgba(100,60,180,0.25); }
+.cc-merunky   { background: linear-gradient(145deg, #fff5ee, #ffe0c8); border-color: rgba(220,110,40,0.3); }
 .cc-zampiony  { background: linear-gradient(145deg, #f0f8f0, #d8ecd8); border-color: rgba(60,120,60,0.3); }
 
 .crop-emoji { font-size: 2.8rem; line-height: 1; display: block; margin-bottom: 12px; }
@@ -412,7 +413,7 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
   <p class="hero-desc">Kompletní průvodce pro nové i zkušené farmáře — od zalití po sklizeň</p>
   <div class="hero-tags">
     <span class="htag">🤝 Komunitní spolupráce</span>
-    <span class="htag">🌽🍊🍅🫐🍓🥔🍌🫑🍄 9 plodin</span>
+    <span class="htag">🌽🍊🍅🫐🍓🥔🍌🫑🍄🍑 10 plodin</span>
     <span class="htag">🎮 5 miniher</span>
     <span class="htag">💰 Sbírání mincí</span>
     <span class="htag">⬆️ Vylepšení</span>
@@ -686,6 +687,25 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
       <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~10 h</span></div>
     </div>
     <div class="crop-vote-note">🫑🌶️🌿 Sklizňová tlačítka</div>
+  </div>
+
+  <div class="crop-card cc-merunky">
+    <span class="crop-emoji">🍑</span>
+    <div class="crop-name">Meruňky</div>
+    <div class="crop-diff">⭐⭐ Střední · Sladká výzva</div>
+    <div class="crop-desc">Sladká výzva. Pomalu dozrávají, ale odměna za trpělivost je nadprůměrná — lepší výkup než papriky.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+2,2 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">3,5–20 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">30–120 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">70–190 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">12 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~2,5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~9 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~16 h</span></div>
+    </div>
+    <div class="crop-vote-note">🍑🌸🌿🌱 Sklizňová tlačítka</div>
   </div>
 
   <div class="crop-card cc-pomerance">
@@ -1103,7 +1123,7 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
     <div class="cmd-body">
       <div class="cmd-slug">/farm_admin_force_plodina [plodina]</div>
       <h4>Násilná změna plodiny</h4>
-      <p>Okamžitě přeruší aktuální pěstování a nastaví novou plodinu od 0 %. Platné ID plodiny: <code>jahody</code>, <code>brambory</code>, <code>kukurice</code>, <code>rajcata</code>, <code>papriky</code>, <code>pomerance</code>, <code>banany</code>, <code>boruvky</code>, <code>zampiony</code>. Embed farmy se automaticky překreslí.</p>
+      <p>Okamžitě přeruší aktuální pěstování a nastaví novou plodinu od 0 %. Platné ID plodiny: <code>jahody</code>, <code>brambory</code>, <code>kukurice</code>, <code>rajcata</code>, <code>papriky</code>, <code>merunky</code>, <code>pomerance</code>, <code>banany</code>, <code>boruvky</code>, <code>zampiony</code>. Embed farmy se automaticky překreslí.</p>
     </div>
   </div>
   <div class="cmd">
@@ -1221,7 +1241,7 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
 
   <div class="faq-item">
     <div class="faq-q">Mohu ovlivnit, jaká plodina se bude pěstovat?</div>
-    <p class="faq-a">Ano — každý člen serveru hlasuje po každé sklizni a na nové farmě. Hlas lze i změnit v průběhu 60 sekund. Embed ukazuje živé počítadlo hlasů pro každou plodinu. Vyhrává plodina s nejvíce hlasy, při remíze nebo bez hlasů se zasadí kukuřice. Moderátoři navíc mohou příkazem <code>/farm_admin_force_plodina</code> plodinu změnit kdykoli — nově včetně žampionů.</p>
+    <p class="faq-a">Ano — každý člen serveru hlasuje po každé sklizni a na nové farmě. Hlas lze i změnit v průběhu 60 sekund. Embed ukazuje živé počítadlo hlasů pro každou plodinu. Vyhrává plodina s nejvíce hlasy, při remíze nebo bez hlasů se zasadí kukuřice. Moderátoři navíc mohou příkazem <code>/farm_admin_force_plodina</code> plodinu změnit kdykoli — nově včetně žampionů a meruněk.</p>
   </div>
 
   <div class="faq-item">
