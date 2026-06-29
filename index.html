@@ -269,6 +269,9 @@ body::before {
 .cc-boruvky   { background: linear-gradient(145deg, #f5f0ff, #e8d8ff); border-color: rgba(100,60,180,0.25); }
 .cc-merunky   { background: linear-gradient(145deg, #fff5ee, #ffe0c8); border-color: rgba(220,110,40,0.3); }
 .cc-zampiony  { background: linear-gradient(145deg, #f0f8f0, #d8ecd8); border-color: rgba(60,120,60,0.3); }
+.cc-cibule    { background: linear-gradient(145deg, #fffde8, #fef5b8); border-color: rgba(200,160,30,0.35); }
+.cc-jablka    { background: linear-gradient(145deg, #fff0f0, #ffd8d8); border-color: rgba(200,30,30,0.3); }
+.cc-mandarinky { background: linear-gradient(145deg, #fff4e0, #ffe0a0); border-color: rgba(255,130,0,0.35); }
 
 .crop-emoji { font-size: 2.8rem; line-height: 1; display: block; margin-bottom: 12px; }
 .crop-name { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
@@ -413,7 +416,7 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
   <p class="hero-desc">Kompletní průvodce pro nové i zkušené farmáře — od zalití po sklizeň</p>
   <div class="hero-tags">
     <span class="htag">🤝 Komunitní spolupráce</span>
-    <span class="htag">🌽🍊🍅🫐🍓🥔🍌🫑🍄🍑 10 plodin</span>
+    <span class="htag">🌽🍊🍅🫐🍓🥔🍌🫑🍄🍑🧅🍎🍊 13 plodin</span>
     <span class="htag">🎮 5 miniher</span>
     <span class="htag">💰 Sbírání mincí</span>
     <span class="htag">⬆️ Vylepšení</span>
@@ -542,7 +545,7 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
 <div id="plodiny" class="sec">
   <div class="sec-icon ic-gold">🌾</div>
   <div class="sec-text">
-    <h2>Devět plodin</h2>
+    <h2>Třináct plodin</h2>
     <p>Každá s jiným tempem, obtížností a odměnami — komunita hlasuje po každé sklizni</p>
   </div>
 </div>
@@ -758,7 +761,7 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
     <span class="crop-emoji">🫐</span>
     <div class="crop-name">Borůvky</div>
     <div class="crop-diff">⭐⭐⭐ Těžká · Obří odměna</div>
-    <div class="crop-desc">Pomalé jako borůvkový keř. Obří odměna pro vytrvalé farmáře. Nejvyšší výkup ze všech.</div>
+    <div class="crop-desc">Pomalé jako borůvkový keř. Obří odměna pro vytrvalé farmáře. Nejvyšší výkup ze všech standardních plodin.</div>
     <div class="crop-stats">
       <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+1,6 %</span></div>
       <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">5–23 min</span></div>
@@ -773,6 +776,101 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
     <div class="crop-vote-note">🫐🍇🌿 Sklizňová tlačítka</div>
   </div>
 </div>
+
+<!-- ⭐ Snadnější — Cibule -->
+<div style="margin-top: 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⭐ Snadnější</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="callout red" style="margin-bottom: 12px;">
+  <span class="callout-icon">🐦‍⬛</span>
+  <div><strong>Pozor na škůdce!</strong> Plodiny v této kategorii přitahují škůdce výrazně více než ostatní — počítejte s 2× vyšším výskytem. Silná ochrana před škůdci je podmínkou úspěchu.</div>
+</div>
+
+<div class="crop-grid">
+  <div class="crop-card cc-cibule">
+    <span class="crop-emoji">🧅</span>
+    <div class="crop-name">Cibule</div>
+    <div class="crop-diff">⭐ Snadnější · Škůdci 2× častěji</div>
+    <div class="crop-desc">Roste relativně rychle, ale škůdci ji milují víc než ostatní. Bez ochrany bude pole v neustálém ohrožení.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+3,5 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">2,3–14 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">27–113 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">55–145 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">10 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~1,5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~9 h</span></div>
+    </div>
+    <div class="crop-vote-note">⚠️ Škůdci 2× více · 🧅🌱🌿🌾 Sklizňová tlačítka</div>
+  </div>
+</div>
+
+<!-- ⭐⭐⭐⭐ Velmi těžká — Jablka -->
+<div style="margin-top: 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);">⭐⭐⭐⭐ Velmi těžká</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="callout red" style="margin-bottom: 12px;">
+  <span class="callout-icon">🐦‍⬛</span>
+  <div><strong>Extrémní výskyt škůdců!</strong> Jablka přitahují škůdce přibližně <strong>3× častěji</strong> než standardní plodiny. Bez komunitního vylepšení ochrany na vysoké úrovni je skoro nemožné je vůbec dostat na sklizeň.</div>
+</div>
+
+<div class="crop-grid">
+  <div class="crop-card cc-jablka">
+    <span class="crop-emoji">🍎</span>
+    <div class="crop-name">Jablka (premium)</div>
+    <div class="crop-diff">⭐⭐⭐⭐ Velmi těžká · Škůdci 3× častěji</div>
+    <div class="crop-desc">Prémiová sklizeň s obří odměnou — ale škůdci sem útočí přibližně 3× častěji. Bez silné ochrany je dostat do sklizně nadlidský výkon.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+1,4 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">4,8–27 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">53–170 min</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">150–420 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">22 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~5,5 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~18 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~29 h</span></div>
+    </div>
+    <div class="crop-vote-note">⚠️ Škůdci 3× více · 🍎🍂🌿🌱 Sklizňová tlačítka</div>
+  </div>
+</div>
+
+<!-- 💀 Nejtěžší — Mandarinky -->
+<div style="margin-top: 20px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+  <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red-mid);">💀 Nejtěžší</span>
+  <div style="flex: 1; height: 1px; background: var(--line);"></div>
+</div>
+
+<div class="callout red" style="margin-bottom: 12px;">
+  <span class="callout-icon">💀</span>
+  <div><strong>Nejnáročnější plodina vůbec.</strong> Mandarinky usychají velmi rychle — čas do uschlnutí je 15–60 minut. Bez téměř nepřetržitého zalévání a koordinace celého serveru nemají šanci.</div>
+</div>
+
+<div class="crop-grid">
+  <div class="crop-card cc-mandarinky">
+    <span class="crop-emoji">🍊</span>
+    <div class="crop-name">Mandarinky</div>
+    <div class="crop-diff">💀 Nejtěžší · Velmi rychlé usychání</div>
+    <div class="crop-desc">Absolutní vrchol obtížnosti. Bez nonstop zalévání uschne dříve, než si vzpomenete. Odměna je ale legendární.</div>
+    <div class="crop-stats">
+      <div class="cstat"><span class="cstat-label">Růst / zalití</span><span class="cstat-val">+1,3 %</span></div>
+      <div class="cstat"><span class="cstat-label">Cooldown</span><span class="cstat-val">~5–28 min</span></div>
+      <div class="cstat"><span class="cstat-label">Čas do uschlnutí</span><span class="cstat-val">15–60 min ⚠️</span></div>
+      <div class="cstat"><span class="cstat-label">Odměna farmy</span><span class="cstat-val">180–500 💰</span></div>
+      <div class="cstat"><span class="cstat-label">Za klik sklizeň</span><span class="cstat-val">26 💰</span></div>
+      <div class="cstat" style="margin-top:6px; padding-top:6px; border-top:1px solid var(--line)"><span class="cstat-label">⏱️ Cyklus (bez kompostéru)</span></div>
+      <div class="cstat"><span class="cstat-label">Nejrychleji</span><span class="cstat-val">~6 h</span></div>
+      <div class="cstat"><span class="cstat-label">Průměrně</span><span class="cstat-val">~20 h</span></div>
+      <div class="cstat"><span class="cstat-label">Nejpomaleji</span><span class="cstat-val">~33 h (reálně neskončí)</span></div>
+    </div>
+    <div class="crop-vote-note">💀 Usychá rychle · 🍊🍋🌿🌱 Sklizňová tlačítka</div>
+  </div>
 
 <div class="callout gold" style="margin-top: 16px;">
   <span class="callout-icon">💡</span>
@@ -1123,7 +1221,7 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
     <div class="cmd-body">
       <div class="cmd-slug">/farm_admin_force_plodina [plodina]</div>
       <h4>Násilná změna plodiny</h4>
-      <p>Okamžitě přeruší aktuální pěstování a nastaví novou plodinu od 0 %. Platné ID plodiny: <code>jahody</code>, <code>brambory</code>, <code>kukurice</code>, <code>rajcata</code>, <code>papriky</code>, <code>merunky</code>, <code>pomerance</code>, <code>banany</code>, <code>boruvky</code>, <code>zampiony</code>. Embed farmy se automaticky překreslí.</p>
+      <p>Okamžitě přeruší aktuální pěstování a nastaví novou plodinu od 0 %. Platné ID plodiny: <code>jahody</code>, <code>brambory</code>, <code>kukurice</code>, <code>rajcata</code>, <code>papriky</code>, <code>merunky</code>, <code>pomerance</code>, <code>banany</code>, <code>boruvky</code>, <code>zampiony</code>, <code>cibule</code>, <code>jablka</code>, <code>mandarinky</code>. Embed farmy se automaticky překreslí.</p>
     </div>
   </div>
   <div class="cmd">
@@ -1250,7 +1348,21 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">Jak se dostat výš v globálním žebříčku?</div>
+    <div class="faq-q">Jak se liší Cibule od ostatních snadných plodin?</div>
+    <p class="faq-a">Cibule patří do kategorie „snadnější" — roste rychleji než kukuřice (+3,5 % za zalití) a má slušnou odměnu. Háček je v tom, že škůdci ji útočí <strong>2× častěji</strong> než ostatní plodiny. Počítejte s tím, že se škůdci budou objevovat pravidelně a bez dobré ochrany bude obtížné ji bez problémů dokončit.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Proč jsou Jablka (premium) tak těžká?</div>
+    <p class="faq-a">Jablka přitahují škůdce přibližně <strong>3× více</strong> než standardní plodiny — to je hlavní výzva. Navíc rostou pomalu (~1,4 % za zalití) a cyklus trvá typicky 18+ hodin. Odměna je ale výjimečná: 150–420 💰 za farmu + 22 mincí za každý klik při sklizni. Vhodné pouze pro vysoce koordinované a aktivní servery s vysokou úrovní ochrany.</p>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Proč jsou Mandarinky označeny jako nejtěžší?</div>
+    <p class="faq-a">Mandarinky mají drasticky krátký čas do uschlnutí — <strong>pouhých 15–60 minut</strong> bez zalití (oproti např. 30–120 minut u kukuřice). Zároveň rostou velmi pomalu (+1,3 % za zalití), takže cyklus vyžaduje nonstop koordinaci celého serveru. Pokud kdokoli zaspí, plodina uschne. Odměna — 180–500 💰 + 26 mincí za klik — je za úspěšnou sklizeň zcela ojedinělá.</p>
+  </div>
+
+
     <p class="faq-a">Globální žebříček serverů sleduje výši serverové pokladny. Nejrychleji pokladna roste sklizněmi náročnějších plodin (borůvky dávají až 320 + bonusy za sazenice) a vysokou aktivitou při každé sklizni. Záložka 🌾 Plodiny v <code>/farm_stats</code> ukáže přehled kolikrát byl každý druh sklizen.</p>
   </div>
 
@@ -1259,7 +1371,7 @@ code { background: rgba(74,46,26,0.08); border-radius: 4px; padding: 1px 6px; fo
 </div><!-- end .page -->
 
 <footer>
-  <span class="fe">🌽 🍊 🍅 🫐 🍓 🥔 🍌 🫑 🍄</span>
+  <span class="fe">🌽 🍊 🍅 🫐 🍓 🥔 🍌 🫑 🍄 🧅 🍎 🍊</span>
   <p><strong>Farma</strong> — komunitní minihra pro Discord</p>
   <p>Hodně zdaru při farmení a bohatou sklizeň! 🚜</p>
 </footer>
